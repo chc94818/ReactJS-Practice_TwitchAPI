@@ -82,11 +82,9 @@ class LiveTest extends React.Component{
                                 width:'100%',
                                 height:'100%',
                                 border: 'none',
-                                scrolling:"no",
-                                frameBorder:'0',
                             }}
 
-                            src={'https://player.twitch.tv/?channel=westdoor&muted=true'} allowFullScreen
+                            src={'https://player.twitch.tv/?channel=westdoor&muted=true&controls=false'} allowFullScreen
                         />
                     </LiveContainer>
                 </LiveDiv>
