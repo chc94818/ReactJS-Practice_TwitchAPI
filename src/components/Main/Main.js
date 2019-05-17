@@ -12,8 +12,8 @@ const BodyDiv = styled.div`
     background: #3B3B3B;
     
     flex-direction: column;
-    width : 100vmax;
-    height : 100vmax;
+    min-width : 100vw;
+    min-height : 100vh;
 `;
 const MainDiv = styled.div`
     display: flex;

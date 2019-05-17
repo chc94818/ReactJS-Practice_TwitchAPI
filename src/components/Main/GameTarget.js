@@ -13,7 +13,7 @@ const Img = styled.img`
 const TargetDiv = styled.div`
     display: inline-block;
     box-sizing : border-box;
-    font-size : 1vmin;
+    font-size : 1.5vmin;
     width: 20vmin;
     margin: 2vmin;
     color: white;
