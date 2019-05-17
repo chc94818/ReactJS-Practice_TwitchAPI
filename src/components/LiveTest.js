@@ -8,15 +8,18 @@ const LiveDiv = styled.div`
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    justify-content: center;
+    //justify-content: center;
     align-items: center;
 `;
 
 const LiveContainer = styled.div`
     display: block;
     font-size: 10vmin;
-    width: 60vw;
-    height: 33.75vw;
+    box-sizing: border-box;
+    padding: 5vmin;
+    //min-width:90vw 
+    width: 80vw;
+    height: 45vw;
 `;
 
 
