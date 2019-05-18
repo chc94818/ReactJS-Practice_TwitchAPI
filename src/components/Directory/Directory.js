@@ -1,16 +1,38 @@
 import React from 'react';
+import styled from "styled-components";
+import GameTarget from "./GameTarget";
 
+const UL = styled.ul`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+`;
 class Directory extends React.Component{
+
     render() {
-        //console.log(this.props.games[0]);
+
         const{
             games
         } = this.props;
-        const list = games.map((game)=><li>{game}</li>);
+        const gamelist = games.map((game)=>
+            {
+                //console.log(game);
+                return (
+                    <li key={game.id}>
+                        <GameTarget
+                            name={game.name}
+                            viewers = {game.viewers}
+                            imageSrc = {game.imgURL}
+                        />
+                    </li>
+                );
+            });
+
         return(
-            <ul>
-                {list}
-            </ul>
+            <UL>
+                {gamelist}
+            </UL>
 
         );
     }

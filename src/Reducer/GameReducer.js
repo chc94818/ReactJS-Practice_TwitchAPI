@@ -10,7 +10,6 @@ const gameRecord = Record({
 let GameReducer = (state = new List(), action) => {
     switch (action.type) {
         case GameActionTypes.LOAD_GAMES_SUCCESS:
-            console.log("red:"+action.games);
             return new List(action.games);
         default:
             return state;

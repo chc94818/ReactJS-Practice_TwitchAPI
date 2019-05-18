@@ -4,22 +4,22 @@ import styled from "styled-components";
 const LiveDiv = styled.div`
     display: flex;
     flex-direction: column;
+    height: 100vh;
     width: 100vw;
-    justify-content: center;
+    //justify-content: center;
     align-items: center;
 `;
 
 const LiveContainer = styled.div`
     display: block;
     font-size: 10vmin;
-    
-    width: 60vw;
-    height: 33.75vw;
-    @media screen and (max-width:500px) {
-        width: 90vw;
-        height: 50.625vw;
-    }
+    box-sizing: border-box;
+    padding: 5vmin;
+    //min-width:90vw 
+    width: 80vw;
+    height: 45vw;
 `;
+
 
 class Live extends React.Component{
     render() {
@@ -28,8 +28,13 @@ class Live extends React.Component{
                 <LiveContainer>
                     <iframe
                         title={'liveVideo'}
-                        style={{width:'100%', height:'100%', border: 'none'}}
-                        src="https://www.youtube.com/embed/lwkM50LpVG0?loop=1&playlist=lwkM50LpVG0" allowFullScreen
+                        style={{
+                            width:'100%',
+                            height:'100%',
+                            border: 'none',
+                        }}
+
+                        src={'https://player.twitch.tv/?channel=westdoor&muted=true&controls=false'} allowFullScreen
                     />
                 </LiveContainer>
             </LiveDiv>

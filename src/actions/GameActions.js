@@ -11,11 +11,20 @@ const axiosRequestTest = (dispatch)=>{
             }}
     )
         .then(response => {
-            //console.log(response.data);
-            return response.data.top.map((gameObj)=>gameObj.game.name)
+
+            return response.data.top.map((gameObj)=>{
+                //console.log(gameObj);
+                return {
+                    id: gameObj.game._id,
+                    name: gameObj.game.name,
+                    imgURL: gameObj.game.box.large,
+                    viewers: gameObj.viewers,
+                }
+
+            })
         }).then((games) => dispatch({
-        type: GameActionTypes.LOAD_GAMES_SUCCESS,
-        games
+            type: GameActionTypes.LOAD_GAMES_SUCCESS,
+            games
         }))
         .catch(error => {
             console.log(error);

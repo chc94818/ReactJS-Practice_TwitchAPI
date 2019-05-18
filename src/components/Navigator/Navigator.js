@@ -2,7 +2,7 @@ import React from 'react';
 //import {withRouter, Link} from "react-router-dom";
 import styled from 'styled-components';
 import LinkButton from './LinkButton';
-
+import {withRouter} from 'react-router-dom';
 const NavigatorDiv = styled.div`
     
     display: flex;
@@ -29,9 +29,12 @@ const generateKey = (pre) => {
 class Navigator extends React.Component{
     constructor(props){
         super(props);
+        let pathId= linkButtons.findIndex((b)=>b.path === props.location.pathname);
+        pathId = pathId? pathId: 1;
         this.state = {
-            selectId: 1,
+            selectId: pathId<1 ? 1:pathId,
         };
+
     }
     onSelect(id){
         this.setState({selectId: id});
@@ -57,4 +60,4 @@ class Navigator extends React.Component{
     }
 }
 
-export default Navigator;
+export default withRouter(Navigator);
