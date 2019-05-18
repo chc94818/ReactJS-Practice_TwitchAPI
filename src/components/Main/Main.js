@@ -37,10 +37,9 @@ class Main extends React.Component{
                 <BodyDiv>
                     <Navigator />
                     <MainDiv>
-                        <Route exact path="/" component={AxiosTest}/>
-                        <Route exact path="/live" component={LiveTest} />
+                        <Route exact path="/" component={DirectoryContainer}/>
+                        <Route exact path="/live" component={Live} />
                         <Route exact path="/directory" component={DirectoryContainer} />
-
                     </MainDiv>
                 </BodyDiv>
             </BrowserRouter>
