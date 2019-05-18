@@ -1,11 +1,14 @@
 import React from 'react';
 import Navigator from '../Navigator/Navigator'
 import Live from '../Live/Live'
-import Directory from '../Directory/Directory'
+import DirectoryContainer from '../Directory/DirectoryContainer'
 import AxiosTest from '../AxiosTest'
 import LiveTest from '../LiveTest'
 import { BrowserRouter, Route } from "react-router-dom"
 import styled from 'styled-components'
+import {connect} from "react-redux";
+
+import GameActions from "../../actions/GameActions";
 
 const BodyDiv = styled.div`
     display: flex;
@@ -25,6 +28,9 @@ const MainDiv = styled.div`
 `;
 
 class Main extends React.Component{
+    componentDidMount() {
+        this.props.loadGames();
+    }
     render() {
         return (
             <BrowserRouter>
@@ -33,7 +39,7 @@ class Main extends React.Component{
                     <MainDiv>
                         <Route exact path="/" component={AxiosTest}/>
                         <Route exact path="/live" component={LiveTest} />
-                        <Route exact path="/directory" component={Directory} />
+                        <Route exact path="/directory" component={DirectoryContainer} />
 
                     </MainDiv>
                 </BodyDiv>
@@ -42,4 +48,9 @@ class Main extends React.Component{
     }
 }
 
-export default Main;
+export default Main = connect(
+    undefined,
+    {
+        loadGames: GameActions.loadGames,
+    }
+)(Main);

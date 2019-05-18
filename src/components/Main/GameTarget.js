@@ -13,9 +13,13 @@ const Img = styled.img`
 const TargetDiv = styled.div`
     display: inline-block;
     box-sizing : border-box;
-    font-size : 2vmin;
-    width: 20vmin;
-    margin: 2vmin;
+    font-size : 1vw;
+    width: 10vw;
+    margin: 1vw;
+    @media screen and (max-width:500px) {
+        width: 20vw;
+    }
+    
     color: white;
     cursor : pointer;
 `;

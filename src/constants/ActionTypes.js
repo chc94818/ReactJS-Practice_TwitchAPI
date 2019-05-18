@@ -5,4 +5,7 @@ let ActionTypes = {
     TOGGLE_TODO: 'TOGGLE_TODO',
     DELETE_TODO: 'DELETE_TODO'
 };
-export default ActionTypes;
+
+export let GameActionTypes = {
+    LOAD_GAMES_SUCCESS: 'LOAD_GAMES_SUCCESS',
+};

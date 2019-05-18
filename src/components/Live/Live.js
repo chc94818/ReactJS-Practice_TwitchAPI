@@ -4,7 +4,6 @@ import styled from "styled-components";
 const LiveDiv = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100vh;
     width: 100vw;
     justify-content: center;
     align-items: center;
@@ -13,8 +12,13 @@ const LiveDiv = styled.div`
 const LiveContainer = styled.div`
     display: block;
     font-size: 10vmin;
+    
     width: 60vw;
     height: 33.75vw;
+    @media screen and (max-width:500px) {
+        width: 90vw;
+        height: 50.625vw;
+    }
 `;
 
 class Live extends React.Component{
