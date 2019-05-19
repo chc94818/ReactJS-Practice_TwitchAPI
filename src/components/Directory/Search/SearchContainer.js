@@ -1,6 +1,9 @@
 import React from 'react';
 import Search from './Search';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import NavigatorActions from "../../../actions/NavigatorActions";
+import ChannelActions from "../../../actions/ChannelActions";
 
 class SearchContainer extends React.Component {
 
@@ -8,17 +11,26 @@ class SearchContainer extends React.Component {
     render() {
         const {
             channels,
-            range
+            onSelect,
+            range,
+            history,
         } = this.props;
         //console.log('top');
         //console.log(Top);
         const sliceChannels = range ? channels.slice(0, range) : channels;
         return (
-            <Search channels={sliceChannels}/>
+            <Search
+                channels={sliceChannels}
+                onSelect={onSelect}
+                history={history}
+            />
         );
     }
 }
-
-export default SearchContainer = connect(
+export default withRouter(SearchContainer = connect(
     (state) => ({channels: state.ChannelReducer}),
-)(SearchContainer);
+    {
+        onSelect: NavigatorActions.onSelect,
+        loadChannels: ChannelActions.loadChannels,
+    }
+)(SearchContainer));

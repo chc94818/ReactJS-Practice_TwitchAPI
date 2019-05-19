@@ -17,7 +17,9 @@ class Search extends React.Component {
     render() {
 
         const {
-            channels
+            channels,
+            onSelect,
+            history,
         } = this.props;
         const channelList = channels.map((channel) => {
             //console.log(game);
@@ -30,6 +32,8 @@ class Search extends React.Component {
                         viewers={channel.viewers}
                         imageSrc={channel.snapShotURL}
                         logoSrc={channel.logoURL}
+                        onSelect={onSelect}
+                        history={history}
                     />
                 </li>
             );

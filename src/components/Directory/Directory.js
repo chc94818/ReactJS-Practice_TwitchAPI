@@ -18,7 +18,10 @@ class Directory extends React.Component {
     render() {
 
         const {
-            games
+            games,
+            onSelect,
+            loadChannels,
+            history,
         } = this.props;
         const gamelist = games.map((game) => {
             //console.log(game);
@@ -28,6 +31,9 @@ class Directory extends React.Component {
                         name={game.name}
                         viewers={game.viewers}
                         imageSrc={game.imgURL}
+                        onSelect={onSelect}
+                        loadChannels={loadChannels}
+                        history={history}
                     />
                 </li>
             );
