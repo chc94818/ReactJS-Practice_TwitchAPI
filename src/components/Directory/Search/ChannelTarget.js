@@ -3,6 +3,7 @@ import {withRouter} from "react-router-dom";
 import styled from 'styled-components';
 import ChannelActions from "../../../actions/ChannelActions";
 import {connect} from "react-redux";
+import NavigatorActions from "../../../actions/NavigatorActions";
 
 const ImgContainer = styled.div`
     position: relative;
@@ -41,9 +42,27 @@ const LiveText = styled.div`
     vertical-align: middle;
 `;
 const TitleText = styled.div`
-    display: inline-block;
+    display: block;
     font-weight: bold;
+    overflow: hidden;
+    height: 1.3em;    
     color: white;
+`;
+const InformationDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+const TextContainer = styled.div`
+    display: block;
+`;
+const LogoContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+`;
+const Logo = styled.img`
+    width: 3em;
 `;
 
 class ChannelTarget extends React.Component {
@@ -54,8 +73,18 @@ class ChannelTarget extends React.Component {
     // }
     constructor(props) {
         super(props);
+        this.clickHandler = this.clickHandler.bind(this);
     }
-
+    clickHandler(){
+        const{
+            name,
+            history,
+            onSelect
+        } = this.props;
+        // link to /live
+        history.push({pathname: `/live`, streamer: name});
+        onSelect(2);
+    }
     render() {
         const {
             title,
@@ -63,16 +92,25 @@ class ChannelTarget extends React.Component {
             displayName,
             viewers,
             imageSrc,
+            logoSrc,
         } = this.props;
         return (
-            <TargetDiv>
+            <TargetDiv onClick={this.clickHandler}>
                 <ImgContainer>
                     <LiveText>Live</LiveText>
                     <Img alt={'snapShot'} src={imageSrc}/>
                 </ImgContainer>
-                <TitleText>{title}</TitleText>
-                <div>{`${displayName} (${name})`}</div>
-                <div>{viewers} 位觀眾</div>
+                <InformationDiv>
+                    <LogoContainer>
+                        <Logo alt={'logo'} src={logoSrc}/>
+                    </LogoContainer>
+                    <TextContainer>
+                        <TitleText>{title}</TitleText>
+                        <div>{`${displayName} (${name})`}</div>
+                        <div>{viewers} 位觀眾</div>
+                    </TextContainer>
+                </InformationDiv>
+
             </TargetDiv>
         );
     }
@@ -81,6 +119,7 @@ class ChannelTarget extends React.Component {
 export default withRouter(ChannelTarget = connect(
     null,
     {
+        onSelect: NavigatorActions.onSelect,
         loadChannels: ChannelActions.loadChannels,
     }
 )(ChannelTarget));

@@ -25,7 +25,8 @@ class Search extends React.Component {
                         name={channel.name}
                         displayName={channel.displayName}
                         viewers={channel.viewers}
-                        imageSrc={channel.imgURL}
+                        imageSrc={channel.snapShotURL}
+                        logoSrc={channel.logoURL}
                     />
                 </li>
             );

@@ -26,7 +26,8 @@ const axiosRequestTest = (game = 'starcraft', dispatch) => {
                     name: channelObj.channel.name,
                     displayName: channelObj.channel.display_name,
                     viewers: channelObj.viewers,
-                    imgURL: channelObj.preview.medium
+                    snapShotURL: channelObj.preview.medium,
+                    logoURL: channelObj.channel.logo
                 }
 
             })
