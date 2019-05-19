@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
-import Main from './components/Main/Main'
+import MainContainer from './components/Main/MainContainer'
 import { createStore, combineReducers, applyMiddleware} from 'redux'
 import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker';
@@ -28,7 +28,7 @@ const store = createStore(
 );
 ReactDOM.render(
     <Provider store={store}>
-        <Main />
+        <MainContainer />
     </Provider>
     , document.getElementById('root'));
 

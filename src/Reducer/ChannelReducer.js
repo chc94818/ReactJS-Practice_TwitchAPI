@@ -9,6 +9,10 @@ const ChannelReducer = (state = new List(), action) => {
             //console.log('reducer');
             //console.log(action.channels.map((channel)=>channel.id));
             return new List(action.channels);
+        case ChannelActionTypes.LOAD_TOP_K_CHANNELS:
+            //console.log('reducer');
+            //console.log(action.channels.map((channel)=>channel.id));
+            return new List(action.channels);
         default:
             return state;
     }
