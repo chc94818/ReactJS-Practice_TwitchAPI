@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigator from '../Navigator/Navigator'
+import Home from '../Home/Home'
 import Live from '../Live/Live'
 import DirectoryContainer from '../Directory/DirectoryContainer'
 import {BrowserRouter, Route} from "react-router-dom"
@@ -40,7 +41,7 @@ class Main extends React.Component {
                 <BodyDiv>
                     <Navigator/>
                     <MainDiv>
-                        <Route exact path="/" component={DirectoryContainer}/>
+                        <Route exact path="/" component={Home}/>
                         <Route exact path="/live" component={Live}/>
 
                         <Route exact path="/directory/search" component={SearchContainer}/>

@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from "styled-components";
-import StreamTarget from "./ChannelTarget";
+import ChannelTarget from "./ChannelTarget";
 
 const UL = styled.ul`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding:0;
+    justify-content: center;
+    align-items: center;
     list-style-type: none;
 `;
 
@@ -20,7 +23,7 @@ class Search extends React.Component {
             //console.log(game);
             return (
                 <li key={channel.id}>
-                    <StreamTarget
+                    <ChannelTarget
                         title={channel.title}
                         name={channel.name}
                         displayName={channel.displayName}

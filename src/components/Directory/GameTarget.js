@@ -15,15 +15,24 @@ const Img = styled.img`
 const TargetDiv = styled.div`
     display: inline-block;
     box-sizing : border-box;
-    font-size : 1.2vw;
+    font-size : 1vw;
     width: 10vw;
     margin: 1vw;
-    @media screen and (max-width:500px) {
+    @media screen and (max-width:1200px) {
         width: 20vw;
+        font-size : 1.4vw;
+    }
+    @media screen and (max-width:500px) {
+        width: 40vw;
+        font-size : 1.6vw;
     }
     
     color: white;
     cursor : pointer;
+`;
+const NameDiv = styled.div`
+    overflow: hidden;
+    height:1.2em;
 `;
 
 
@@ -35,11 +44,11 @@ class GameTarget extends React.Component {
     // }
     constructor(props) {
         super(props);
-        this.clickHandeler= this.clickHandeler.bind(this);
+        this.clickHandeler = this.clickHandeler.bind(this);
     }
 
     clickHandeler() {
-        const{
+        const {
             history,
             name,
             loadChannels
@@ -47,6 +56,7 @@ class GameTarget extends React.Component {
         history.push('/directory/search');
         loadChannels(name);
     }
+
     render() {
         const {
             name,
@@ -58,17 +68,16 @@ class GameTarget extends React.Component {
                 <ImgContainer>
                     <Img alt={'game'} src={imageSrc}/>
                 </ImgContainer>
-                <div>{name}</div>
+                <NameDiv>{name}</NameDiv>
                 <div>{viewers} 位觀眾</div>
             </TargetDiv>
         );
     }
 }
 
-export default withRouter(GameTarget= connect(
+export default withRouter(GameTarget = connect(
     null,
     {
         loadChannels: ChannelActions.loadChannels,
     }
-
 )(GameTarget));
