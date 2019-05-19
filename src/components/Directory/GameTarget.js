@@ -1,8 +1,5 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
 import styled from 'styled-components';
-import ChannelActions from "../../actions/ChannelActions";
-import {connect} from "react-redux";
 
 const ImgContainer = styled.div`
     width: 100%;
@@ -51,10 +48,12 @@ class GameTarget extends React.Component {
         const {
             history,
             name,
-            loadChannels
+            loadChannels,
+            onSelect,
         } = this.props;
-        history.push('/directory/search');
         loadChannels(name);
+        onSelect(3);
+        history.push('/directory/search');
     }
 
     render() {
@@ -75,9 +74,4 @@ class GameTarget extends React.Component {
     }
 }
 
-export default withRouter(GameTarget = connect(
-    null,
-    {
-        loadChannels: ChannelActions.loadChannels,
-    }
-)(GameTarget));
+export default GameTarget;

@@ -1,9 +1,5 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
 import styled from 'styled-components';
-import ChannelActions from "../../../actions/ChannelActions";
-import {connect} from "react-redux";
-import NavigatorActions from "../../../actions/NavigatorActions";
 
 const ImgContainer = styled.div`
     position: relative;
@@ -116,10 +112,4 @@ class ChannelTarget extends React.Component {
     }
 }
 
-export default withRouter(ChannelTarget = connect(
-    null,
-    {
-        onSelect: NavigatorActions.onSelect,
-        loadChannels: ChannelActions.loadChannels,
-    }
-)(ChannelTarget));
+export default ChannelTarget;
