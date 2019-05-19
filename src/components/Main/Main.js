@@ -2,13 +2,14 @@ import React from 'react';
 import Navigator from '../Navigator/Navigator'
 import Live from '../Live/Live'
 import DirectoryContainer from '../Directory/DirectoryContainer'
-import AxiosTest from '../AxiosTest'
-import LiveTest from '../LiveTest'
-import { BrowserRouter, Route } from "react-router-dom"
+import {BrowserRouter, Route} from "react-router-dom"
 import styled from 'styled-components'
 import {connect} from "react-redux";
 
-import GameActions from "../../actions/GameActions";
+//import GameActions from "../../actions/GameActions";
+import TopActions from "../../actions/TopActions";
+import ChannelActions from "../../actions/ChannelActions";
+import SearchContainer from "../Directory/Search/SearchContainer";
 
 const BodyDiv = styled.div`
     display: flex;
@@ -27,19 +28,23 @@ const MainDiv = styled.div`
     align-items: center;
 `;
 
-class Main extends React.Component{
+class Main extends React.Component {
     componentDidMount() {
-        this.props.loadGames();
+        this.props.loadChannels('League of Legends');
+        this.props.loadTops();
     }
+
     render() {
         return (
             <BrowserRouter>
                 <BodyDiv>
-                    <Navigator />
+                    <Navigator/>
                     <MainDiv>
                         <Route exact path="/" component={DirectoryContainer}/>
-                        <Route exact path="/live" component={Live} />
-                        <Route exact path="/directory" component={DirectoryContainer} />
+                        <Route exact path="/live" component={Live}/>
+
+                        <Route exact path="/directory/search" component={SearchContainer}/>
+                        <Route exact path="/directory" component={DirectoryContainer}/>
                     </MainDiv>
                 </BodyDiv>
             </BrowserRouter>
@@ -50,6 +55,7 @@ class Main extends React.Component{
 export default Main = connect(
     undefined,
     {
-        loadGames: GameActions.loadGames,
+        loadChannels: ChannelActions.loadChannels,
+        loadTops: TopActions.loadTops
     }
 )(Main);

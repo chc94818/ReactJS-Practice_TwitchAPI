@@ -1,10 +1,10 @@
 import React from 'react';
-import {withRouter, link} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import styled from 'styled-components';
 
 const Button = styled.li`
     display: inline-block;
-    ${props=> props.selected ? 'border-bottom : solid white 0.3vmin;': ''};
+    ${props => props.selected ? 'border-bottom : solid white 0.3vmin;' : ''};
     box-sizing : border-box;
     font-size : 1vw;
     padding: 0.5vw 1vw;
@@ -13,7 +13,7 @@ const Button = styled.li`
         padding: 1.5w 2.5vw;
     }
     margin: 0;
-    color: ${props=> props.selected ? 'white' : '#C9C9C9'};
+    color: ${props => props.selected ? 'white' : '#C9C9C9'};
     &:hover {
       color : white;
     }
@@ -21,22 +21,22 @@ const Button = styled.li`
 `;
 
 
-class LinkButton extends React.Component{
+class LinkButton extends React.Component {
     constructor(props) {
         super(props);
-
         this.linkHandler = this.linkHandler.bind(this);
     }
 
     linkHandler() {
-        const{path, onSelect} = this.props;
-        this.props.history.push(path);
+        const {onSelect, path, history} = this.props;
+        history.push(path);
         onSelect();
     }
+
     render() {
-        const{title, selected} = this.props;
+        const {title, selected} = this.props;
         //console.log(`${title} ${selected}`);
-        return(
+        return (
             <Button selected={selected} onClick={this.linkHandler}>{title}</Button>
         );
     }

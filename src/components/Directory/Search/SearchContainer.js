@@ -1,22 +1,23 @@
 import React from 'react';
-import Directory from './Directory';
+import Search from './Search';
 import {connect} from 'react-redux';
 
 class SearchContainer extends React.Component {
 
+
     render() {
         const {
-            Top
+            channels
         } = this.props;
-        console.log('top');
-        console.log(Top);
+        //console.log('top');
+        //console.log(Top);
         return (
-            <Directory games={Top}/>
+            <Search channels={channels}/>
 
         );
     }
 }
 
 export default SearchContainer = connect(
-    (state) => ({Top: state.TopReducer}),
+    (state) => ({channels: state.ChannelReducer}),
 )(SearchContainer);

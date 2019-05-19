@@ -1,11 +1,12 @@
-let ActionTypes = {
-    LOAD_TODOS_SUCCESS: 'LOAD_TODOS_SUCCESS',
-    CREATE_TODO: 'CREATE_TODO',
-    UPDATE_TODO: 'UPDATE_TODO',
-    TOGGLE_TODO: 'TOGGLE_TODO',
-    DELETE_TODO: 'DELETE_TODO'
+export const TopActionTypes = {
+    LOAD_TOPS: 'LOAD_TOPS',
 };
-
-export let GameActionTypes = {
-    LOAD_GAMES_SUCCESS: 'LOAD_GAMES_SUCCESS',
+export const ChannelActionTypes = {
+    LOAD_CHANNELS: 'LOAD_CHANNELS',
+};
+export const GameActionTypes = {
+    LOAD_GAMES: 'LOAD_GAMES',
+};
+export const NavigatorActionTypes = {
+    ON_SELECT: 'ON_SELECT',
 };

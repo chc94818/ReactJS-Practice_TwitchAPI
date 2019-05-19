@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter, link} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import styled from 'styled-components';
 
 const ImgContainer = styled.div`
@@ -25,7 +25,7 @@ const TargetDiv = styled.div`
 `;
 
 
-class GameTarget extends React.Component{
+class GameTarget extends React.Component {
     constructor(props) {
         super(props);
 
@@ -37,19 +37,19 @@ class GameTarget extends React.Component{
     //     onSelect();
     // }
     render() {
-        const{
+        const {
             name,
             popularity,
             imageSrc,
         } = this.props;
-        return(
-                <TargetDiv>
-                    <ImgContainer>
-                        <Img alt={'game'} src = {imageSrc} />
-                    </ImgContainer>
-                    <div>{name}</div>
-                    <div>{popularity}位觀眾</div>
-                </TargetDiv>
+        return (
+            <TargetDiv>
+                <ImgContainer>
+                    <Img alt={'game'} src={imageSrc}/>
+                </ImgContainer>
+                <div>{name}</div>
+                <div>{popularity}位觀眾</div>
+            </TargetDiv>
         );
     }
 }

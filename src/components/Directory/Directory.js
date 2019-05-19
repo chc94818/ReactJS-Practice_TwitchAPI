@@ -8,28 +8,28 @@ const UL = styled.ul`
     flex-wrap: wrap;
     list-style-type: none;
 `;
-class Directory extends React.Component{
+
+class Directory extends React.Component {
 
     render() {
 
-        const{
+        const {
             games
         } = this.props;
-        const gamelist = games.map((game)=>
-            {
-                //console.log(game);
-                return (
-                    <li key={game.id}>
-                        <GameTarget
-                            name={game.name}
-                            viewers = {game.viewers}
-                            imageSrc = {game.imgURL}
-                        />
-                    </li>
-                );
-            });
+        const gamelist = games.map((game) => {
+            //console.log(game);
+            return (
+                <li key={game.id}>
+                    <GameTarget
+                        name={game.name}
+                        viewers={game.viewers}
+                        imageSrc={game.imgURL}
+                    />
+                </li>
+            );
+        });
 
-        return(
+        return (
             <UL>
                 {gamelist}
             </UL>
