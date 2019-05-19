@@ -1,4 +1,4 @@
-import {GameActionTypes} from '../constants/ActionTypes';
+import {TopActionTypes} from '../constants/ActionTypes';
 import axios from "axios";
 
 const axiosRequestTest = (dispatch) => {
@@ -13,28 +13,26 @@ const axiosRequestTest = (dispatch) => {
         }
     )
         .then(response => {
-
+            //console.log(response);
             return response.data.top.map((gameObj) => {
-                //console.log(gameObj);
                 return {
                     id: gameObj.game._id,
                     name: gameObj.game.name,
                     imgURL: gameObj.game.box.large,
                     viewers: gameObj.viewers,
                 }
-
             })
-        }).then((games) => dispatch({
-        type: GameActionTypes.LOAD_GAMES_SUCCESS,
-        games
+        }).then((tops) => dispatch({
+        type: TopActionTypes.LOAD_TOPS,
+        tops,
     }))
         .catch(error => {
             console.log(error);
         });
 };
-let GameActions = {
-    loadGames() {
+let TopActions = {
+    loadTops() {
         return axiosRequestTest;
     }
 };
-export default GameActions;
+export default TopActions;

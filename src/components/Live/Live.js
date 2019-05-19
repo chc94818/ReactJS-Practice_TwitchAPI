@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import {connect} from "react-redux";
 
 const LiveDiv = styled.div`
     display: flex;
@@ -21,20 +22,27 @@ const LiveContainer = styled.div`
 `;
 
 
-class Live extends React.Component{
+class Live extends React.Component {
     render() {
-        return(
+        const {channels} = this.props;
+
+        console.log(channels.get(5) ? channels.get(5).name : 1);
+        const name = channels.get(5) ? channels.get(5).name : 'westdoor';
+        const url = `https://player.twitch.tv/?channel=${name}&muted=true&controls=true`;
+        console.log(url);
+        return (
             <LiveDiv>
                 <LiveContainer>
                     <iframe
                         title={'liveVideo'}
                         style={{
-                            width:'100%',
-                            height:'100%',
+                            width: '100%',
+                            height: '100%',
                             border: 'none',
                         }}
 
-                        src={'https://player.twitch.tv/?channel=westdoor&muted=true&controls=false'} allowFullScreen
+                        src={url} allowFullScreen
+                        //src = {url}
                     />
                 </LiveContainer>
             </LiveDiv>
@@ -42,4 +50,6 @@ class Live extends React.Component{
     }
 }
 
-export default Live;
+export default Live = connect(
+    (state) => ({channels: state.ChannelReducer}),
+)(Live);

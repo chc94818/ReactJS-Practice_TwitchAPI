@@ -7,7 +7,9 @@ import { createStore, combineReducers, applyMiddleware} from 'redux'
 import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker';
 import GameReducer from './Reducer/GameReducer';
-
+import TopReducer from './Reducer/TopReducer';
+import ChannelReducer from './Reducer/ChannelReducer';
+import NavigatorReducer from './Reducer/NavigatorReducer'
 
 
 const thunkMiddleware = ({ dispatch, getState }) => {
@@ -19,7 +21,7 @@ const thunkMiddleware = ({ dispatch, getState }) => {
     };
 };
 
-const composedReducer = combineReducers({GameReducer});
+const composedReducer = combineReducers({GameReducer, TopReducer, ChannelReducer, NavigatorReducer});
 const store = createStore(
     composedReducer,
     applyMiddleware(thunkMiddleware)
