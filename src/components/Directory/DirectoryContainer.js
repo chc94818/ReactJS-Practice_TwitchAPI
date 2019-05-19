@@ -6,17 +6,17 @@ class SearchContainer extends React.Component {
 
     render() {
         const {
-            Top
+            tops,
+            range
         } = this.props;
-        console.log('top');
-        console.log(Top);
+        const sliceTop = range ? tops.slice(0, range) : tops;
         return (
-            <Directory games={Top}/>
+            <Directory games={sliceTop}/>
 
         );
     }
 }
 
 export default SearchContainer = connect(
-    (state) => ({Top: state.TopReducer}),
+    (state) => ({tops: state.TopReducer}),
 )(SearchContainer);

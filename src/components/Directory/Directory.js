@@ -7,6 +7,10 @@ const UL = styled.ul`
     flex-direction: row;
     flex-wrap: wrap;
     list-style-type: none;
+    padding:0;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
 `;
 
 class Directory extends React.Component {

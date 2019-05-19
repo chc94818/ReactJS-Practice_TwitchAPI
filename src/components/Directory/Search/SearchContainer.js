@@ -7,13 +7,14 @@ class SearchContainer extends React.Component {
 
     render() {
         const {
-            channels
+            channels,
+            range
         } = this.props;
         //console.log('top');
         //console.log(Top);
+        const sliceChannels = range ? channels.slice(0, range) : channels;
         return (
-            <Search channels={channels}/>
-
+            <Search channels={sliceChannels}/>
         );
     }
 }

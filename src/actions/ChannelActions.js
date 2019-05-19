@@ -1,7 +1,7 @@
 import {ChannelActionTypes} from '../constants/ActionTypes';
 import axios from "axios";
 
-const axiosRequestTest = (game = 'starcraft', dispatch) => {
+const axiosRequestGame = (game = 'starcraft', dispatch) => {
     const client_id = 'o327iy2ljxbybzqkl479p82yhum9yh';
     const limit = 16;
     axios.get(
@@ -43,7 +43,7 @@ const ChannelActions = {
     loadChannels(game) {
         //console.log('action');
         //console.log(game);
-        return axiosRequestTest.bind(null, game);
+        return axiosRequestGame.bind(null, game);
     }
 };
 export default ChannelActions;
