@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import {connect} from 'react-redux';
-import Live from '../Live/Live'
 import SearchContainer from '../Directory/Search/SearchContainer'
 import DirectoryContainer from '../Directory/DirectoryContainer';
 
@@ -48,30 +46,25 @@ const RecommnedTitleDiv = styled.div`
     border-top: solid 0.05em white;
     color: white;
 `;
-
-const LiveContainer = styled.div`
-    display: block;
-    font-size: 10vmin;
-    box-sizing: border-box;
-    padding: 5vmin;
-    //min-width:90vw 
-    width: 40vw;
-    height: 22.5vw;
-`;
+//
+// const LiveContainer = styled.div`
+//     display: block;
+//     font-size: 10vmin;
+//     box-sizing: border-box;
+//     padding: 5vmin;
+//     //min-width:90vw
+//     width: 40vw;
+//     height: 22.5vw;
+// `;
 
 
 class Home extends React.Component {
     render() {
-        const RecommendClassRangeLimit = 8;
-        const RecommendTopRangeLimit = 8;
-        const {channels, location} = this.props;
-        const randomId = Live.getRandom(0, channels.size);
-        const randomStreamer = channels.get(randomId) ? channels.get(randomId).name : 'westdoor';
-        const name = location.streamer ? location.streamer : randomStreamer;
-        const url = `https://player.twitch.tv/?channel=${name}&muted=true&controls=true`;
-        //console.log(url);
+        const {
+            recommendClassNum,
+            recommendTopNum,
+        } = this.props;
         return (
-
             <HomeDiv>
                 <LiveDiv>
                     LiveDiv
@@ -79,11 +72,11 @@ class Home extends React.Component {
                 <RecommendDiv>
                     <RecommendClassDiv>
                         <RecommnedTitleDiv>推薦的分類</RecommnedTitleDiv>
-                        <DirectoryContainer range={RecommendClassRangeLimit}/>
+                        <DirectoryContainer range={recommendClassNum}/>
                     </RecommendClassDiv>
                     <RecommendTopDiv>
                         <RecommnedTitleDiv>推薦的頻道</RecommnedTitleDiv>
-                        <SearchContainer range={RecommendTopRangeLimit}/>
+                        <SearchContainer range={recommendTopNum}/>
                     </RecommendTopDiv>
                 </RecommendDiv>
             </HomeDiv>
@@ -91,6 +84,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home = connect(
-    (state) => ({channels: state.ChannelReducer}),
-)(Home);
+export default Home;

@@ -3,6 +3,7 @@ export const TopActionTypes = {
 };
 export const ChannelActionTypes = {
     LOAD_CHANNELS: 'LOAD_CHANNELS',
+    LOAD_TOP_K_CHANNELS: 'LOAD_TOP_K_CHANNELS',
 };
 export const GameActionTypes = {
     LOAD_GAMES: 'LOAD_GAMES',

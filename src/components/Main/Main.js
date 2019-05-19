@@ -1,15 +1,10 @@
 import React from 'react';
-import Navigator from '../Navigator/Navigator'
-import Home from '../Home/Home'
-import Live from '../Live/Live'
+import NavigatorContainer from '../Navigator/NavigatorContainer'
+import HomeContainer from '../Home/HomeContainer'
+import LiveContainer from '../Live/LiveContainer'
 import DirectoryContainer from '../Directory/DirectoryContainer'
 import {BrowserRouter, Route} from "react-router-dom"
 import styled from 'styled-components'
-import {connect} from "react-redux";
-
-//import GameActions from "../../actions/GameActions";
-import TopActions from "../../actions/TopActions";
-import ChannelActions from "../../actions/ChannelActions";
 import SearchContainer from "../Directory/Search/SearchContainer";
 
 const BodyDiv = styled.div`
@@ -30,20 +25,14 @@ const MainDiv = styled.div`
 `;
 
 class Main extends React.Component {
-    componentDidMount() {
-        this.props.loadChannels('League of Legends');
-        this.props.loadTops();
-    }
-
     render() {
         return (
             <BrowserRouter>
                 <BodyDiv>
-                    <Navigator/>
+                    <NavigatorContainer/>
                     <MainDiv>
-                        <Route exact path="/" component={Home}/>
-                        <Route exact path="/live" component={Live}/>
-
+                        <Route exact path="/" component={HomeContainer}/>
+                        <Route exact path="/live" component={LiveContainer}/>
                         <Route exact path="/directory/search" component={SearchContainer}/>
                         <Route exact path="/directory" component={DirectoryContainer}/>
                     </MainDiv>
@@ -53,10 +42,4 @@ class Main extends React.Component {
     }
 }
 
-export default Main = connect(
-    undefined,
-    {
-        loadChannels: ChannelActions.loadChannels,
-        loadTops: TopActions.loadTops
-    }
-)(Main);
+export default Main;
