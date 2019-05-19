@@ -23,13 +23,17 @@ const LiveContainer = styled.div`
 
 
 class Live extends React.Component {
-    render() {
-        const {channels} = this.props;
+    static getRandom(min, max) {
+        return Math.floor(Math.random() * max) + min;
+    }
 
-        console.log(channels.get(5) ? channels.get(5).name : 1);
-        const name = channels.get(5) ? channels.get(5).name : 'westdoor';
+    render() {
+        const {channels, location} = this.props;
+        const randomId = Live.getRandom(0, channels.size);
+        const randomStreamer = channels.get(randomId)? channels.get(randomId).name:'westdoor';
+        const name = location.streamer ? location.streamer : randomStreamer;
         const url = `https://player.twitch.tv/?channel=${name}&muted=true&controls=true`;
-        console.log(url);
+        //console.log(url);
         return (
             <LiveDiv>
                 <LiveContainer>
