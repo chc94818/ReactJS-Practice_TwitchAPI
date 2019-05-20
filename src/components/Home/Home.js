@@ -14,9 +14,9 @@ const RecommendLiveDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 30vmax;
+    height: 40vmax;
     @media screen and (max-width:1000px) {
-        height: 50vmax;
+        height: 60vmax;
     }
     margin: 1vmax 0;
     //border: solid 1em blue;
