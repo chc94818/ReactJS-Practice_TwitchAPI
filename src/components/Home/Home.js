@@ -14,11 +14,15 @@ const RecommendLiveDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
+<<<<<<< HEAD
     height: 40vmax;
+=======
+    height: 45vmax;
+>>>>>>> redux
     @media screen and (max-width:1000px) {
         height: 60vmax;
     }
-    margin: 1vmax 0;
+    margin: 1vmin 0;
     //border: solid 1em blue;
     justify-content: center;
     align-items: center;
