@@ -24,7 +24,7 @@ const requestTopGames = (limit = 50, dispatch) => {
             return {
                 id: gameObj.game._id,
                 name: gameObj.game.name,
-                imgURL: gameObj.game.box.large,
+                imgURL: gameObj.game.box.medium,
                 viewers: gameObj.viewers,
             }
         })

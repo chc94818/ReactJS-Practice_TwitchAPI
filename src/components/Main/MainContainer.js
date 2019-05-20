@@ -10,9 +10,11 @@ class MainContainer extends React.Component {
         const {
             loadTopKChannels,
             loadTopGames,
+            createWatching,
         } = this.props;
         loadTopKChannels(8);
         loadTopGames();
+        createWatching();
     }
 
     render() {

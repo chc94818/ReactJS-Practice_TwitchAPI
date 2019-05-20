@@ -9,6 +9,7 @@ class HomeContainer extends React.Component {
     render() {
         return (
             <Home
+                liveNum={5}
                 recommendClassNum={CLASS_LIMIT}
                 recommendTopNum={TOP_LIMIT}
             />
