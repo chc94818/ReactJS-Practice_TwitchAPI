@@ -16,7 +16,7 @@ const axiosRequestGameChannels = (game, limit) => {
         console.log(error);
     });
 };
-
+// request for specific game's top channels
 const requestGameChannels = (game = 'starcraft', limit = 16, dispatch) => {
     axiosRequestGameChannels(game, limit).then(response => {
         return response.data.streams.map((channelObj) => {
@@ -54,8 +54,9 @@ const axiosRequestTops = (limit) => {
         console.log(error);
     });
 };
-const requestTopChannels = (limit = 8, dispatch) => {
 
+// request top channel for each game
+const requestTopChannels = (limit = 8, dispatch) => {
     return axiosRequestTops(limit).then(response => {
 
         const promises = response.data.top.map((channel) => {
@@ -63,8 +64,9 @@ const requestTopChannels = (limit = 8, dispatch) => {
         });
         return Promise.all(promises);
     }).then((channels) => {
-
+        //console.log(channels);
         return channels.map((channelObj) => {
+            //console.log(channelObj);
             return {
                 id: channelObj.data.streams[0].channel._id,
                 title: channelObj.data.streams[0].channel.status,
@@ -84,14 +86,63 @@ const requestTopChannels = (limit = 8, dispatch) => {
         console.log(error);
     });
 };
+
+const axiosRequestChannel = (name) => {
+    return axios.get(
+        //`https://api.twitch.tv/kraken/games/top?&limit=${20}&offset=${5}`,
+        `https://api.twitch.tv/kraken/streams/?channel=${name}`,
+        {
+            headers: {
+                'Client-ID': client_id,
+            }
+        }
+    ).catch(error => {
+        console.log(error);
+    });
+};
+
+// request specific channel of id
+const requestChannel = (name = 'gaules', dispatch) => {
+    return axiosRequestChannel(name).then(response => {
+        //console.log('response');
+        //console.log(response);
+        return response.data.streams.map((channelObj) => {
+
+
+            return {
+                id: channelObj.channel._id,
+                title: channelObj.channel.status,
+                name: channelObj.channel.name,
+                displayName: channelObj.channel.display_name,
+                viewers: channelObj.viewers,
+                snapShotURL: channelObj.preview.medium,
+                logoURL: channelObj.channel.logo
+            }
+
+        });
+    }).then((channels) => dispatch({
+        type: ChannelActionTypes.SEARCH_CHANNEL,
+        channels,
+    })).catch(error => {
+        console.log(error);
+    });
+};
+
+// Actions
 const ChannelActions = {
+    // load descendinng order channels by viewers of specific game
     loadChannels(game, limit) {
         //console.log('action');
         //console.log(game);
         return requestGameChannels.bind(null, game, limit);
     },
+    // load each top channel of k games
     loadTopKChannels(K) {
         return requestTopChannels.bind(null, K);
+    },
+    // search specific channel with channel name
+    searchChannel(channelName) {
+        return requestChannel.bind(null, channelName);
     }
 };
 export default ChannelActions;

@@ -1,13 +1,18 @@
 import React from 'react';
 import Main from './Main';
 import {connect} from "react-redux";
-import TopActions from "../../actions/TopActions";
+import GameActions from "../../actions/GameActions";
 import ChannelActions from "../../actions/ChannelActions";
+import WatchingActions from "../../actions/WatchingActions";
 
 class MainContainer extends React.Component {
     componentDidMount() {
-        this.props.loadTopKChannels(8);
-        this.props.loadTops();
+        const {
+            loadTopKChannels,
+            loadTopGames,
+        } = this.props;
+        loadTopKChannels(8);
+        loadTopGames();
     }
 
     render() {
@@ -18,9 +23,11 @@ class MainContainer extends React.Component {
 }
 
 export default MainContainer = connect(
-    undefined,
+    (state) => ({channels: state.ChannelReducer }),
     {
         loadTopKChannels: ChannelActions.loadTopKChannels,
-        loadTops: TopActions.loadTops
+        searchChannel: ChannelActions.searchChannel,
+        loadTopGames: GameActions.loadTopGames,
+        createWatching: WatchingActions.createWatching,
     }
 )(MainContainer);

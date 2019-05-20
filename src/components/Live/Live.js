@@ -21,12 +21,10 @@ const LiveContainer = styled.div`
 
 
 class Live extends React.Component {
-    static getRandom(min, max) {
-        return Math.floor(Math.random() * max) + min;
-    }
-
     render() {
-        const {liveURL} = this.props;
+        const {watchChannel} = this.props;
+
+        const channelURL = `https://player.twitch.tv/?channel=${watchChannel.name}&muted=true&controls=true`;
         return (
             <LiveDiv>
                 <LiveContainer>
@@ -37,8 +35,7 @@ class Live extends React.Component {
                             height: '100%',
                             border: 'none',
                         }}
-
-                        src={liveURL} allowFullScreen
+                        src={channelURL} allowFullScreen
                         //src = {url}
                     />
                 </LiveContainer>

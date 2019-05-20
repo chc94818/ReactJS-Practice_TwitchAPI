@@ -54,4 +54,4 @@ class GameTarget extends React.Component {
     }
 }
 
-export default withRouter(GameTarget);
+export default GameTarget;

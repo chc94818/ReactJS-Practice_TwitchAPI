@@ -7,7 +7,6 @@ import NavigatorActions from "../../actions/NavigatorActions";
 const linkButtons = [
     {title: 'N', path: '/'},
     {title: '首頁', path: '/'},
-    {title: '直播', path: '/live'},
     {title: '瀏覽', path: '/directory'},
 ];
 
