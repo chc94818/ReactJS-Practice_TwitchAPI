@@ -9,16 +9,17 @@ class SearchContainer extends React.Component {
 
     render() {
         const {
-            tops,
+            topGames,
             loadChannels,
             onSelect,
             range,
             history,
         } = this.props;
-        const sliceTop = range ? tops.slice(0, range) : tops;
+        //console.log(topGames);
+        const sliceGames = range ? topGames.slice(0, range) : topGames;
         return (
             <Directory
-                games={sliceTop}
+                games={sliceGames}
                 onSelect={onSelect}
                 loadChannels={loadChannels}
                 history={history}
@@ -29,7 +30,7 @@ class SearchContainer extends React.Component {
 }
 
 export default withRouter(SearchContainer = connect(
-    (state) => ({tops: state.TopReducer}),
+    (state) => ({topGames: state.GameReducer}),
     {
         onSelect: NavigatorActions.onSelect,
         loadChannels: ChannelActions.loadChannels,

@@ -6,11 +6,11 @@ const Button = styled.li`
     display: inline-block;
     ${props => props.selected ? 'border-bottom : solid white 0.3vmin;' : ''};
     box-sizing : border-box;
-    font-size : 1vw;
-    padding: 0.5vw 1vw;
-    @media screen and (max-width : 500px){
-        font-size : 2vw;
-        padding: 1.5w 2.5vw;
+    font-size : 1.5vw;
+    padding: 1vw 1vw;
+    @media screen and (max-width : 800px){
+        font-size : 3vmax;
+        padding: 2vmax 3vmax;
     }
     margin: 0;
     color: ${props => props.selected ? 'white' : '#C9C9C9'};

@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import App from './App';
 import MainContainer from './components/Main/MainContainer'
 import { createStore, combineReducers, applyMiddleware} from 'redux'
 import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker';
 import GameReducer from './Reducer/GameReducer';
-import TopReducer from './Reducer/TopReducer';
+import WatchingReducer from './Reducer/WatchingReducer';
 import ChannelReducer from './Reducer/ChannelReducer';
 import NavigatorReducer from './Reducer/NavigatorReducer'
 
@@ -21,7 +20,7 @@ const thunkMiddleware = ({ dispatch, getState }) => {
     };
 };
 
-const composedReducer = combineReducers({GameReducer, TopReducer, ChannelReducer, NavigatorReducer});
+const composedReducer = combineReducers({GameReducer, WatchingReducer, ChannelReducer, NavigatorReducer});
 const store = createStore(
     composedReducer,
     applyMiddleware(thunkMiddleware)

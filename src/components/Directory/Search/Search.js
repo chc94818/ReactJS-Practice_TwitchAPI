@@ -19,6 +19,7 @@ class Search extends React.Component {
         const {
             channels,
             onSelect,
+            updateWatching,
             history,
         } = this.props;
         const channelList = channels.map((channel) => {
@@ -26,13 +27,9 @@ class Search extends React.Component {
             return (
                 <li key={channel.id}>
                     <ChannelTarget
-                        title={channel.title}
-                        name={channel.name}
-                        displayName={channel.displayName}
-                        viewers={channel.viewers}
-                        imageSrc={channel.snapShotURL}
-                        logoSrc={channel.logoURL}
+                        channel={channel}
                         onSelect={onSelect}
+                        updateWatching={updateWatching}
                         history={history}
                     />
                 </li>

@@ -51,8 +51,8 @@ class GameTarget extends React.Component {
             loadChannels,
             onSelect,
         } = this.props;
-        loadChannels(name);
-        onSelect(3);
+        loadChannels(name,8);
+        onSelect(2);
         history.push('/directory/search');
     }
 

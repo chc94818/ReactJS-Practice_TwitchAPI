@@ -1,25 +1,50 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Live from './Live';
+import WatchingActions from "../../actions/WatchingActions";
 
 class LiveContainer extends React.Component {
-    static getRandom(min, max) {
-        return Math.floor(Math.random() * max) + min;
+    static getRandom(min, max, nums) {
+        const list = [...Array((max-min)).keys()].map(e=>e+min);
+
+        const randomList = [];
+        for (let i = 0; i < nums; i++) {
+            let ran = Math.floor(Math.random() * (max-min));
+            randomList.push(list[ran]);
+            list.slice(ran, 1);
+        }
+        return randomList;
+    }
+
+    componentDidMount() {
+        const {
+            watchChannel,
+            channels,
+            createWatching,
+        } = this.props;
+        if (watchChannel.displayName === 'Loading') {
+            createWatching(channels.get(LiveContainer.getRandom(0, channels.size)));
+        }
+
     }
 
     render() {
-        const {channels, location} = this.props;
-        const randomId = Live.getRandom(0, channels.size);
-        const randomStreamer = channels.get(randomId) ? channels.get(randomId).name : 'westdoor';
-        const name = location.streamer ? location.streamer : randomStreamer;
-        const url = `https://player.twitch.tv/?channel=${name}&muted=true&controls=true`;
-        //console.log(url);
+        const {
+            watchChannel,
+        } = this.props;
         return (
-            <Live liveURL={url}/>
+            <Live watchChannel={watchChannel}/>
         );
     }
 }
 
 export default LiveContainer = connect(
-    (state) => ({channels: state.ChannelReducer}),
+    (state) => ({
+        channels: state.ChannelReducer,
+        watchChannel: state.WatchingReducer,
+    }),
+    {
+        createWatching: WatchingActions.createWatching,
+    }
 )(LiveContainer);
+

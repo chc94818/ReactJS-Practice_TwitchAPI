@@ -4,7 +4,6 @@ import styled from "styled-components";
 const LiveDiv = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100vw;
     //justify-content: center;
     align-items: center;
 `;
@@ -13,20 +12,46 @@ const LiveContainer = styled.div`
     display: block;
     font-size: 10vmin;
     box-sizing: border-box;
-    padding: 5vmin;
+    padding-top: 5vmin;
     //min-width:90vw 
-    width: 80vw;
-    height: 45vw;
+    width: 70vw;
+    height: 40vw;
+    @media screen and (max-width:1000px) {
+        width: 95vw;
+        height: 60vw;
+    }
 `;
 
-
+const TitleText = styled.div`
+    display: block;
+    font-weight: bold;
+    overflow: hidden;
+    height: 1.3em;    
+    color: white;
+`;
+const InformationDiv = styled.div`
+    display: flux;
+    width: 100%;
+    flex-direction: row;
+`;
+const TextContainer = styled.div`
+    color: white;
+    display: block;
+`;
+const LogoContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+`;
+const Logo = styled.img`
+    width: 3em;
+`;
 class Live extends React.Component {
-    static getRandom(min, max) {
-        return Math.floor(Math.random() * max) + min;
-    }
-
     render() {
-        const {liveURL} = this.props;
+        const {watchChannel} = this.props;
+        console.log(watchChannel);
+        const channelURL = `https://player.twitch.tv/?channel=${watchChannel.name}&muted=true&controls=true`;
         return (
             <LiveDiv>
                 <LiveContainer>
@@ -37,12 +62,22 @@ class Live extends React.Component {
                             height: '100%',
                             border: 'none',
                         }}
-
-                        src={liveURL} allowFullScreen
+                        src={channelURL} allowFullScreen
                         //src = {url}
                     />
                 </LiveContainer>
+                <InformationDiv>
+                    <LogoContainer>
+                        <Logo alt={'logo'} src={watchChannel.logoURL}/>
+                    </LogoContainer>
+                    <TextContainer>
+                        <TitleText>{watchChannel.title}</TitleText>
+                        <div>{`${watchChannel.displayName} (${watchChannel.name})`}</div>
+                        <div>{watchChannel.viewers} 位觀眾</div>
+                    </TextContainer>
+                </InformationDiv>
             </LiveDiv>
+
         );
     }
 }

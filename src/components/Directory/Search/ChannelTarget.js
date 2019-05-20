@@ -73,37 +73,36 @@ class ChannelTarget extends React.Component {
     }
     clickHandler(){
         const{
-            name,
+            channel,
+            updateWatching,
             history,
             onSelect
         } = this.props;
         // link to /live
-        history.push({pathname: `/live`, streamer: name});
-        onSelect(2);
+        history.push({pathname: `/live`});
+        console.log('click');
+        console.log(channel.name);
+        updateWatching(channel);
+        onSelect(-1);
     }
     render() {
         const {
-            title,
-            name,
-            displayName,
-            viewers,
-            imageSrc,
-            logoSrc,
+            channel,
         } = this.props;
         return (
             <TargetDiv onClick={this.clickHandler}>
                 <ImgContainer>
                     <LiveText>Live</LiveText>
-                    <Img alt={'snapShot'} src={imageSrc}/>
+                    <Img alt={'snapShot'} src={channel.snapShotURL}/>
                 </ImgContainer>
                 <InformationDiv>
                     <LogoContainer>
-                        <Logo alt={'logo'} src={logoSrc}/>
+                        <Logo alt={'logo'} src={channel.logoURL}/>
                     </LogoContainer>
                     <TextContainer>
-                        <TitleText>{title}</TitleText>
-                        <div>{`${displayName} (${name})`}</div>
-                        <div>{viewers} 位觀眾</div>
+                        <TitleText>{channel.title}</TitleText>
+                        <div>{`${channel.displayName} (${channel.name})`}</div>
+                        <div>{channel.viewers} 位觀眾</div>
                     </TextContainer>
                 </InformationDiv>
 

@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import NavigatorActions from "../../../actions/NavigatorActions";
 import ChannelActions from "../../../actions/ChannelActions";
+import WatchingActions from "../../../actions/WatchingActions";
 
 class SearchContainer extends React.Component {
 
@@ -12,6 +13,7 @@ class SearchContainer extends React.Component {
         const {
             channels,
             onSelect,
+            updateWatching,
             range,
             history,
         } = this.props;
@@ -22,6 +24,7 @@ class SearchContainer extends React.Component {
             <Search
                 channels={sliceChannels}
                 onSelect={onSelect}
+                updateWatching={updateWatching}
                 history={history}
             />
         );
@@ -32,5 +35,6 @@ export default withRouter(SearchContainer = connect(
     {
         onSelect: NavigatorActions.onSelect,
         loadChannels: ChannelActions.loadChannels,
+        updateWatching: WatchingActions.updateWatching,
     }
 )(SearchContainer));
