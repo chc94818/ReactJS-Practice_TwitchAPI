@@ -42,10 +42,10 @@ class GameTarget extends React.Component {
     // }
     constructor(props) {
         super(props);
-        this.clickHandeler = this.clickHandeler.bind(this);
+        this.clickHandler = this.clickHandler.bind(this);
     }
 
-    clickHandeler() {
+    clickHandler() {
         const {
             history,
             name,
@@ -64,7 +64,7 @@ class GameTarget extends React.Component {
             imageSrc,
         } = this.props;
         return (
-            <TargetDiv onClick={this.clickHandeler}>
+            <TargetDiv onClick={this.clickHandler}>
                 <ImgContainer>
                     <Img alt={'game'} src={imageSrc}/>
                 </ImgContainer>
