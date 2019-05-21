@@ -79,19 +79,22 @@ class GameTarget extends React.Component {
     // }
     constructor(props) {
         super(props);
-        this.clickHandeler = this.clickHandeler.bind(this);
+        this.clickHandler = this.clickHandler.bind(this);
     }
 
-    clickHandeler() {
+    clickHandler() {
         const {
+            channel,
+            updateWatching,
             history,
-            name,
-            loadChannels,
-            onSelect,
+            onSelect
         } = this.props;
-        loadChannels(name,16);
-        onSelect(2);
-        history.push('/directory/search');
+        // link to /live
+        history.push({pathname: `/live`});
+        console.log('click');
+        console.log(channel.name);
+        updateWatching(channel);
+        onSelect(-1);
     }
 
     render() {
@@ -99,7 +102,7 @@ class GameTarget extends React.Component {
             channel,
         } = this.props;
         return (
-            <TargetDiv onClick={this.clickHandeler}>
+            <TargetDiv onClick={this.clickHandler}>
                 <ImgContainer>
                     <LiveText>LIVE</LiveText>
                     <Img alt={'game'} src={channel.snapShotURL}/>
