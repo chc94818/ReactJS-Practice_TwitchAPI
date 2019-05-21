@@ -59,7 +59,7 @@ const axiosRequestTops = (limit) => {
 const requestTopChannels = (limit = 4, dispatch) => {
     return axiosRequestTops(limit).then(response => {
         return Promise.all(response.data.top.map((channel) => {
-            return axiosRequestGameChannels(channel.game.name, 8);
+            return axiosRequestGameChannels(channel.game.name, 1);
         }));
     }).then((channels) => {
         //console.log(channels);

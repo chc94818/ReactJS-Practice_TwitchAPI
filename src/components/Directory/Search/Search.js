@@ -2,12 +2,14 @@ import React from 'react';
 import styled from "styled-components";
 import ChannelTarget from "./ChannelTarget";
 
-const UL = styled.ul`
+const UL = styled.ul`    
     display: flex;
+    width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
-    padding:0;
-    justify-content: center;
+    list-style-type: none;
+    padding: 0 2vmin;
+    justify-content: flex-start;
     align-items: center;
     list-style-type: none;
 `;
