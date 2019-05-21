@@ -10,7 +10,8 @@ const Img = styled.img`
     
 `;
 const TargetDiv = styled.div`
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     box-sizing : border-box;
     font-size : 1vw;
     width: 10vw;
@@ -29,7 +30,7 @@ const TargetDiv = styled.div`
 `;
 const NameDiv = styled.div`
     overflow: hidden;
-    height:1.2em;
+    height: 1.3em;
 `;
 
 

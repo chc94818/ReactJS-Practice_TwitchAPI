@@ -2,18 +2,15 @@ import React from 'react';
 import styled from "styled-components";
 import ChannelTarget from "./ChannelTarget";
 
-const UL = styled.ul`    
-    display: flex;
-    width: 100%;
+const UL = styled.ul`
+    display: inline-flex;
+    align-self: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     list-style-type: none;
-    padding: 0 2vmin;
-    justify-content: flex-start;
-    align-items: center;
-    list-style-type: none;
+    justify-content: center;
+    padding: 0;
 `;
-
 class Search extends React.Component {
 
     render() {

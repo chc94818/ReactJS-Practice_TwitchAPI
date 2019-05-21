@@ -1,5 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+const TargetDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    box-sizing : border-box;
+    font-size : 1vw;
+    width: 20vw;
+    margin: 1em;
+    min-width: 15em;    
+    @media screen and (max-width:1200px) {
+        width: 40vw;        
+        font-size : 1.4vw;
+    }
+    color: white;
+    cursor : pointer;
+`;
 
 const ImgContainer = styled.div`
     position: relative;
@@ -10,20 +25,6 @@ const Img = styled.img`
     width: 100%;
     
 `;
-const TargetDiv = styled.div`
-    box-sizing : border-box;
-    font-size : 0.8vw;
-    width: 20vw;    
-    margin: 2vmax;
-    @media screen and (max-width:1200px) {
-        width: 40vw;
-        font-size : 1.4vw;
-    }
-    
-    color: white;
-    cursor : pointer;
-`;
-
 const LiveText = styled.div`
     position: absolute;    
     display: inline-block;
@@ -36,37 +37,41 @@ const LiveText = styled.div`
     line-height: 1.2vw;
     vertical-align: middle;
 `;
+const InformationDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+`;
+
+const LogoContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5em;
+`;
+
+const Logo = styled.img`
+    width: 3em;
+`;
+const TextContainer = styled.div`
+    display: block;
+`;
+
 const TitleText = styled.div`
     display: block;
     font-weight: bold;
     overflow: hidden;
-    height: 1.3em;    
+    height: 1.4em;    
     color: white;
 `;
 const ProfileText = styled.div`
     display: block;
     overflow: hidden;
-    height: 1.3em;    
+    height: 1.4em;    
     color: white;
 `;
-const InformationDiv = styled.div`
-    display: flex;
-    flex-direction: row;
-`;
-const TextContainer = styled.div`
-    display: block;
-`;
-const LogoContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 1em;
-`;
-const Logo = styled.img`
-    width: 3em;
-`;
 
-class ChannelTarget extends React.Component {
+class GameTarget extends React.Component {
     // linkHandler() {
     //     const{path, onSelect} = this.props;
     //     this.props.history.push(path);
@@ -74,31 +79,30 @@ class ChannelTarget extends React.Component {
     // }
     constructor(props) {
         super(props);
-        this.clickHandler = this.clickHandler.bind(this);
+        this.clickHandeler = this.clickHandeler.bind(this);
     }
-    clickHandler(){
-        const{
-            channel,
-            updateWatching,
+
+    clickHandeler() {
+        const {
             history,
-            onSelect
+            name,
+            loadChannels,
+            onSelect,
         } = this.props;
-        // link to /live
-        history.push({pathname: `/live`});
-        console.log('click');
-        console.log(channel.name);
-        updateWatching(channel);
-        onSelect(-1);
+        loadChannels(name,16);
+        onSelect(2);
+        history.push('/directory/search');
     }
+
     render() {
         const {
             channel,
         } = this.props;
         return (
-            <TargetDiv onClick={this.clickHandler}>
+            <TargetDiv onClick={this.clickHandeler}>
                 <ImgContainer>
-                    <LiveText>Live</LiveText>
-                    <Img alt={'snapShot'} src={channel.snapShotURL}/>
+                    <LiveText>LIVE</LiveText>
+                    <Img alt={'game'} src={channel.snapShotURL}/>
                 </ImgContainer>
                 <InformationDiv>
                     <LogoContainer>
@@ -110,9 +114,10 @@ class ChannelTarget extends React.Component {
                         <ProfileText>{channel.viewers} 位觀眾</ProfileText>
                     </TextContainer>
                 </InformationDiv>
+
             </TargetDiv>
         );
     }
 }
 
-export default ChannelTarget;
+export default GameTarget;
