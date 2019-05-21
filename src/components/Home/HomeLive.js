@@ -1,24 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 const ControlDiv = styled.div`
-    display: block;
-    position: absolute;
-    cursor: pointer;
-    width: ${props => props.order === 0 ? "50em" : 50 * (0.8 ** Math.abs(props.order)) + "em"};
-    height: ${props => props.order === 0 ? "28.125em" : 28.125 * (0.8 ** Math.abs(props.order)) + "em"};
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    z-index: 10;
+    &{
+        display: block;
+        position: absolute;
+        cursor: pointer;
+        width: ${props => props.order === 0 ? "50em" : 50 * (0.8 ** Math.abs(props.order)) + "em"};
+        height: ${props => props.order === 0 ? "28.125em" : 28.125 * (0.8 ** Math.abs(props.order)) + "em"};
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        z-index: 10;
+    }
+    
     ${props => (
     (props.order !== 0) ?
-        `
-            & :hover {
-                transform: scale(1.05, 1.05); 
-                transition-duration: 0.2s;          
+        `   & {                
+                filter: brightness(50%);
+                z-index: ${10 - Math.abs(props.order)};
+                transform: translate(${-50 + props.order * 30}%,-50%);
             }
-            z-index: ${10 - Math.abs(props.order)};
-            transform: translate(${-50 + props.order * 35}%,-50%);
+            &:hover {                
+                filter: brightness(100%);
+                transition-duration: 0.2s;
+                transform: translate(${-50 + props.order * 30}%,-50%) scale(1.05, 1.05);                
+            }
+            
             `
         :
         ''

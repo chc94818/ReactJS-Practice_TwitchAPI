@@ -11,11 +11,10 @@ const Img = styled.img`
     
 `;
 const TargetDiv = styled.div`
-    display: inline-block;
     box-sizing : border-box;
     font-size : 0.8vw;
-    width: 20vw;
-    margin: 1vw;
+    width: 20vw;    
+    margin: 2vmax;
     @media screen and (max-width:1200px) {
         width: 40vw;
         font-size : 1.4vw;
@@ -40,6 +39,12 @@ const LiveText = styled.div`
 const TitleText = styled.div`
     display: block;
     font-weight: bold;
+    overflow: hidden;
+    height: 1.3em;    
+    color: white;
+`;
+const ProfileText = styled.div`
+    display: block;
     overflow: hidden;
     height: 1.3em;    
     color: white;
@@ -101,11 +106,10 @@ class ChannelTarget extends React.Component {
                     </LogoContainer>
                     <TextContainer>
                         <TitleText>{channel.title}</TitleText>
-                        <div>{`${channel.displayName} (${channel.name})`}</div>
-                        <div>{channel.viewers} 位觀眾</div>
+                        <ProfileText>{`${channel.displayName} (${channel.name})`}</ProfileText>
+                        <ProfileText>{channel.viewers} 位觀眾</ProfileText>
                     </TextContainer>
                 </InformationDiv>
-
             </TargetDiv>
         );
     }
