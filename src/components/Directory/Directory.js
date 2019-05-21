@@ -4,14 +4,11 @@ import GameTarget from "./GameTarget";
 
 const UL = styled.ul`
     display: flex;
-    width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
     list-style-type: none;
-    padding: 0 2vmin;
-    justify-content: flex-start;
-    align-items: center;
-    list-style-type: none;
+    justify-content: center;
+    padding: 0;
 `;
 
 class Directory extends React.Component {

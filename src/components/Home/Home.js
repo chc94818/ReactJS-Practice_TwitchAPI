@@ -5,6 +5,7 @@ import DirectoryContainer from '../Directory/DirectoryContainer';
 import MultiLivesContainer from './MultiLivesContainer'
 const HomeDiv = styled.div`
     display: flex;
+    width: 100vw;
     flex-direction: column;
     //background: red;
     align-items: center;
@@ -25,20 +26,23 @@ const RecommendLiveDiv = styled.div`
 `;
 const RecommendDiv = styled.div`
     display: flex;
+    width: 100%;
     flex-direction: column;
     //border: solid 1em green;
     justify-content: center;
     align-items: center;
 `;
 
-const GameDiv = styled.div`
+const GameDiv = styled.div`    
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 `;
 const ChannelDiv = styled.div`
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
