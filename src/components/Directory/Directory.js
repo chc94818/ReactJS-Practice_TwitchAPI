@@ -26,8 +26,8 @@ class Directory extends React.Component {
             return (
                 <li key={game.id}>
                     <GameTarget
+                        game_id={game.id}
                         name={game.name}
-                        viewers={game.viewers}
                         imageSrc={game.imgURL}
                         onSelect={onSelect}
                         loadChannels={loadChannels}

@@ -15,8 +15,9 @@ class SearchContainer extends React.Component {
             range,
             history,
         } = this.props;
-        //console.log(topGames);
+
         const sliceGames = range ? topGames.slice(0, range) : topGames;
+        //console.log(sliceGames);
         return (
             <Directory
                 games={sliceGames}

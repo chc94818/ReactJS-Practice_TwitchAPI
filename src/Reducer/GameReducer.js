@@ -6,6 +6,7 @@ const {List} = Immutable;
 const GameReducer = (state = new List(), action) => {
     switch (action.type) {
         case GameActionTypes.LOAD_TOP_GAMES:
+            //console.log(action.topGames);
             return new List(action.topGames);
         default:
             return state;

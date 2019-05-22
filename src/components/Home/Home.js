@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import SearchContainer from '../Directory/Search/SearchContainer'
 import DirectoryContainer from '../Directory/DirectoryContainer';
 import MultiLivesContainer from './MultiLivesContainer'
+import Search from "../Directory/Search/Search";
+import MultiLives from "./MultiLives";
 const HomeDiv = styled.div`
     display: flex;
     width: 100vw;
@@ -67,7 +69,7 @@ class Home extends React.Component {
         return (
             <HomeDiv>
                 <RecommendLiveDiv>
-                    <MultiLivesContainer liveNum={liveNum}/>
+                    <MultiLivesContainer liveNum={5}/>
                 </RecommendLiveDiv>
                 <RecommendDiv>
                     <GameDiv>

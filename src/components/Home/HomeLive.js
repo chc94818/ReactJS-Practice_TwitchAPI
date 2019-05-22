@@ -61,7 +61,7 @@ class HomeLive extends React.Component {
                 <img
                     style={{width: '100%', height: '100%'}}
                     alt={'snapShot'}
-                    src={channel.snapShotURL}/>
+                    src={channel.imgURL}/>
         );
     }
 
