@@ -68,11 +68,11 @@ class Live extends React.Component {
                 </LiveContainer>
                 <InformationDiv>
                     <LogoContainer>
-                        <Logo alt={'logo'} src={watchChannel.logoURL}/>
+                        <Logo alt={'logo'} src={watchChannel.imgURL}/>
                     </LogoContainer>
                     <TextContainer>
                         <TitleText>{watchChannel.title}</TitleText>
-                        <div>{`${watchChannel.displayName} (${watchChannel.name})`}</div>
+                        <div>{watchChannel.name}</div>
                         <div>{watchChannel.viewers} 位觀眾</div>
                     </TextContainer>
                 </InformationDiv>

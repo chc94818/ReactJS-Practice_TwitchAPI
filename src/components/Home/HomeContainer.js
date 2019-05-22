@@ -17,6 +17,4 @@ class HomeContainer extends React.Component {
     }
 }
 
-export default HomeContainer = connect(
-    (state) => ({channels: state.ChannelReducer}),
-)(HomeContainer);
+export default HomeContainer;

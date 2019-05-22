@@ -17,8 +17,8 @@ class SearchContainer extends React.Component {
             range,
             history,
         } = this.props;
-        //console.log('top');
-        //console.log(Top);
+        //console.log('channels');
+        //console.log(channels);
         const sliceChannels = range ? channels.slice(0, range) : channels;
         return (
             <Search

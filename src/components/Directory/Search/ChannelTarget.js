@@ -91,8 +91,8 @@ class GameTarget extends React.Component {
         } = this.props;
         // link to /live
         history.push({pathname: `/live`});
-        console.log('click');
-        console.log(channel.name);
+        //console.log('click');
+        //console.log(channel.name);
         updateWatching(channel);
         onSelect(-1);
     }
@@ -101,19 +101,21 @@ class GameTarget extends React.Component {
         const {
             channel,
         } = this.props;
+
+        //console.log(channel);
         return (
             <TargetDiv onClick={this.clickHandler}>
                 <ImgContainer>
                     <LiveText>LIVE</LiveText>
-                    <Img alt={'game'} src={channel.snapShotURL}/>
+                    <Img alt={'game'} src={channel.imgURL}/>
                 </ImgContainer>
                 <InformationDiv>
                     <LogoContainer>
-                        <Logo alt={'logo'} src={channel.logoURL}/>
+                        <Logo alt={'logo'} src={channel.imgURL}/>
                     </LogoContainer>
                     <TextContainer>
                         <TitleText>{channel.title}</TitleText>
-                        <ProfileText>{`${channel.displayName} (${channel.name})`}</ProfileText>
+                        <ProfileText>{channel.name}</ProfileText>
                         <ProfileText>{channel.viewers} 位觀眾</ProfileText>
                     </TextContainer>
                 </InformationDiv>

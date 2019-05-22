@@ -8,6 +8,7 @@ const UL = styled.ul`
     flex-direction: row;
     flex-wrap: wrap;
     list-style-type: none;
+    flex-content: center;
     justify-content: center;
     padding: 0;
 `;
@@ -22,7 +23,6 @@ class Search extends React.Component {
             history,
         } = this.props;
         const channelList = channels.map((channel) => {
-            //console.log(game);
             return (
                 <li key={channel.id}>
                     <ChannelTarget

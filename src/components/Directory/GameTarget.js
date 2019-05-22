@@ -48,11 +48,11 @@ class GameTarget extends React.Component {
     clickHandler() {
         const {
             history,
-            name,
+            game_id,
             loadChannels,
             onSelect,
         } = this.props;
-        loadChannels(name,16);
+        loadChannels(game_id,4);
         onSelect(2);
         history.push('/directory/search');
     }
@@ -60,7 +60,6 @@ class GameTarget extends React.Component {
     render() {
         const {
             name,
-            viewers,
             imageSrc,
         } = this.props;
         return (
@@ -69,7 +68,6 @@ class GameTarget extends React.Component {
                     <Img alt={'game'} src={imageSrc}/>
                 </ImgContainer>
                 <NameDiv>{name}</NameDiv>
-                <div>{viewers} 位觀眾</div>
             </TargetDiv>
         );
     }
