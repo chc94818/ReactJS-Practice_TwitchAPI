@@ -6,7 +6,8 @@ const TargetDiv = styled.div`
     display: flex;
     flex-direction: column;
     font-size: 0;
-    font-weight: bold;
+    font-weight: bold;    
+    min-width: 100px;
     color: white;
     cursor : pointer;
 `;
@@ -36,7 +37,8 @@ const GameTitle = styled.div`
         line-height: 12px;
         height: 24px;
     }
-    white-space: wrap;
+    overflow: hidden;
+    white-space: normal;
 `;
 
 class GameTarget extends React.Component {

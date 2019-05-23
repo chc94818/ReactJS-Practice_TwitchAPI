@@ -22,9 +22,6 @@ const GameGrid = styled.div`
     @media screen and (max-width:800px) {
          grid-template-columns: repeat(2, 1fr);
     }
-    @media screen and (max-width:500px) {
-         grid-template-columns: repeat(1, 1fr);
-    }
     padding: 0 5vmax;
     margin: 2vmax auto;
 `;
