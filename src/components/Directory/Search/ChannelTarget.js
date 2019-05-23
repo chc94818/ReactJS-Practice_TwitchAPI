@@ -4,7 +4,8 @@ import styled from 'styled-components';
 const TargetDiv = styled.div`
     display: flex;
     flex-direction: column;
-    font-weight: bold;
+    font-weight: bold;  
+    min-width: 200px;
     color: white;
     cursor : pointer;
     font-size: 0;
