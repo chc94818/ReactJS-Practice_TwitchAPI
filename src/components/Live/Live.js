@@ -29,14 +29,13 @@ const InformationDiv = styled.div`
     flex-direction: row;
     align-items: center;
     background: #5E5E5E;
-    border: solid 2px #737373
     border-style: solid;    
     border-width: 0 1px 1px 1px;    
     border-color: #737373;
-    font-size: 12px;
-    padding-top: 10px;
+    font-size: 16px;
+    padding-top: 2px;
     @media screen and (max-width:1200px) {
-        font-size: 10px;
+        font-size: 12px;
     }
     @media screen and (max-width:800px) {
          font-size: 8px;
@@ -46,9 +45,9 @@ const InformationDiv = styled.div`
 const LogoContainer = styled.div`
     display: inline-block;
     position: relative;
-    width: 5em;
-    padding-top: 5em;
-    margin-right: 2%;   
+    width: 4.5em;
+    padding-top: 4.5em;
+    margin-right: 0.5em;   
 `;
 
 const Logo = styled.img`

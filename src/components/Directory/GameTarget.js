@@ -5,22 +5,40 @@ import styled from 'styled-components';
 const TargetDiv = styled.div`
     display: flex;
     flex-direction: column;
-    font-size: 1em;
+    font-size: 0;
     font-weight: bold;
     color: white;
     cursor : pointer;
 `;
 
 const ImgContainer = styled.div`
-    margin-bottom: 2px;
 `;
 const Img = styled.img`
     width: 100%;    
 `;
 
-const GameTitle= styled.div`
+const GameTitle = styled.div`
+    background: #5E5E5E;
+    border-style: solid;
+    border-width: 0 1px 1px 1px;    
+    border-color: #737373;
+    font-size: 16px;  
+    line-height: 24px;  
+    height: 48px;
+    padding-top: 2px;
+    @media screen and (max-width:1200px) {
+        font-size: 12px;
+        line-height: 18px;
+        height: 36px;
+    }
+    @media screen and (max-width:800px) {
+        font-size: 8px;
+        line-height: 12px;
+        height: 24px;
+    }
     white-space: wrap;
 `;
+
 class GameTarget extends React.Component {
     // linkHandler() {
     //     const{path, onSelect} = this.props;
@@ -39,7 +57,7 @@ class GameTarget extends React.Component {
             loadChannels,
             onSelect,
         } = this.props;
-        loadChannels(game_id,24);
+        loadChannels(game_id, 24);
         onSelect(2);
         history.push('/directory/search');
     }
