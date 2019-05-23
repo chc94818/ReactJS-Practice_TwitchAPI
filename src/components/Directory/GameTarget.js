@@ -1,39 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ImgContainer = styled.div`
-    width: 100%;
-`;
 
-const Img = styled.img`
-    width: 100%;
-    
-`;
 const TargetDiv = styled.div`
     display: flex;
     flex-direction: column;
-    box-sizing : border-box;
-    font-size : 1vw;
-    width: 10vw;
-    margin: 1vw;
-    @media screen and (max-width:1200px) {
-        width: 20vw;
-        font-size : 1.4vw;
-    }
-    @media screen and (max-width:500px) {
-        width: 40vw;
-        font-size : 1.6vw;
-    }
-    
+    font-size: 1em;
+    font-weight: bold;
     color: white;
     cursor : pointer;
 `;
-const NameDiv = styled.div`
-    overflow: hidden;
-    height: 1.3em;
+
+const ImgContainer = styled.div`
+    margin-bottom: 2px;
+`;
+const Img = styled.img`
+    width: 100%;    
 `;
 
-
+const GameTitle= styled.div`
+    word-break: break-all;
+`;
 class GameTarget extends React.Component {
     // linkHandler() {
     //     const{path, onSelect} = this.props;
@@ -52,7 +39,7 @@ class GameTarget extends React.Component {
             loadChannels,
             onSelect,
         } = this.props;
-        loadChannels(game_id,4);
+        loadChannels(game_id,24);
         onSelect(2);
         history.push('/directory/search');
     }
@@ -67,7 +54,7 @@ class GameTarget extends React.Component {
                 <ImgContainer>
                     <Img alt={'game'} src={imageSrc}/>
                 </ImgContainer>
-                <NameDiv>{name}</NameDiv>
+                <GameTitle>{name}</GameTitle>
             </TargetDiv>
         );
     }

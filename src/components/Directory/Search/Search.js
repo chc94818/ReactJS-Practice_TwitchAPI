@@ -2,16 +2,20 @@ import React from 'react';
 import styled from "styled-components";
 import ChannelTarget from "./ChannelTarget";
 
-const UL = styled.ul`
-    display: inline-flex;
-    align-self: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap;
-    list-style-type: none;
-    flex-content: center;
-    justify-content: center;
-    padding: 0;
+const ChannelGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1vw 1vw;
+    @media screen and (max-width:1600px) {
+         grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width:800px) {
+         grid-template-columns: repeat(1, 1fr);
+    }
+    padding: 0 5vmax;
+    margin: 2vmax auto;
 `;
+
 class Search extends React.Component {
 
     render() {
@@ -24,21 +28,20 @@ class Search extends React.Component {
         } = this.props;
         const channelList = channels.map((channel) => {
             return (
-                <li key={channel.id}>
-                    <ChannelTarget
-                        channel={channel}
-                        onSelect={onSelect}
-                        updateWatching={updateWatching}
-                        history={history}
-                    />
-                </li>
+                <ChannelTarget
+                    key={channel.id}
+                    channel={channel}
+                    onSelect={onSelect}
+                    updateWatching={updateWatching}
+                    history={history}
+                />
             );
         });
 
         return (
-            <UL>
+            <ChannelGrid>
                 {channelList}
-            </UL>
+            </ChannelGrid>
         );
     }
 }

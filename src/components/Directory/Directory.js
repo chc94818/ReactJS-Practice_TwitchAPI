@@ -2,13 +2,27 @@ import React from 'react';
 import styled from "styled-components";
 import GameTarget from "./GameTarget";
 
-const UL = styled.ul`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    list-style-type: none;
-    justify-content: center;
-    padding: 0;
+// const UL = styled.ul`
+//     display: block;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     justify-content: flex-start;
+//     width: 98%;
+//     list-style-type: none;
+//     padding: 0;
+// `;
+
+const GameGrid = styled.div`
+    display: grid;   
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1vw 1vw;
+    @media screen and (max-width:1400px) {
+         grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width:800px) {
+         grid-template-columns: repeat(2, 1fr);
+    }
+    margin: 2vmax auto;
 `;
 
 class Directory extends React.Component {
@@ -24,23 +38,22 @@ class Directory extends React.Component {
         const gamelist = games.map((game) => {
             //console.log(game);
             return (
-                <li key={game.id}>
-                    <GameTarget
-                        game_id={game.id}
-                        name={game.name}
-                        imageSrc={game.imgURL}
-                        onSelect={onSelect}
-                        loadChannels={loadChannels}
-                        history={history}
-                    />
-                </li>
+                <GameTarget
+                    key={game.id}
+                    game_id={game.id}
+                    name={game.name}
+                    imageSrc={game.imgURL}
+                    onSelect={onSelect}
+                    loadChannels={loadChannels}
+                    history={history}
+                />
             );
         });
 
         return (
-            <UL>
+            <GameGrid>
                 {gamelist}
-            </UL>
+            </GameGrid>
 
         );
     }
