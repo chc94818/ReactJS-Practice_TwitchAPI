@@ -2,18 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TargetDiv = styled.div`
+    display: flex;
     flex-direction: column;
     font-weight: bold;
     color: white;
     cursor : pointer;
+    font-size: 0;
 `;
 
 const ImgContainer = styled.div`
     position: relative;
-    margin-bottom: 2px;
+    font-size: 12px;
 `;
 const Img = styled.img`
-    width: 100%;    
+    width: 100%;
 `;
 const LiveText = styled.div`
     position: absolute;    
@@ -30,7 +32,13 @@ const InformationDiv = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    background: #5E5E5E;
+    border: solid 2px #737373
+    border-style: solid;    
+    border-width: 0 1px 1px 1px;    
+    border-color: #737373;
     font-size: 12px;
+    padding-top: 2px;
     @media screen and (max-width:1200px) {
         font-size: 10px;
     }
@@ -126,7 +134,6 @@ class GameTarget extends React.Component {
                         <ProfileText>{channel.viewers} 位觀眾</ProfileText>
                     </TextContainer>
                 </InformationDiv>
-
             </TargetDiv>
         );
     }

@@ -43,8 +43,7 @@ const ControlDiv = styled.div`
 const LiveContainer = styled.div`
     position: absolute;
     width: 100%;
-    height: 100%;
-    //min-width:90vw     
+    height: 100%;  
 `;
 
 

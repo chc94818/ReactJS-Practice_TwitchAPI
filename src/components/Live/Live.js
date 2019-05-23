@@ -1,51 +1,85 @@
 import React from 'react';
 import styled from "styled-components";
 
-const LiveDiv = styled.div`
+const TargetDiv = styled.div`
     display: flex;
     flex-direction: column;
-    //justify-content: center;
-    align-items: center;
+    font-weight: bold;
+    color: white;
+    cursor : pointer;
+    font-size: 0;
+    width: 60%
+    @media screen and (max-width:1200px) {
+        width: 80%;
+    }
+    @media screen and (max-width:800px) {
+        width: 100%;
+    }  
+    
 `;
 
 const LiveContainer = styled.div`
+    position: relative;
     display: block;
-    font-size: 10vmin;
-    box-sizing: border-box;
-    padding-top: 5vmin;
-    //min-width:90vw 
-    width: 70vw;
-    height: 40vw;
-    @media screen and (max-width:1000px) {
-        width: 95vw;
-        height: 60vw;
+    width: 100%;
+    padding-bottom: 56.25%;
+`;
+const InformationDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #5E5E5E;
+    border: solid 2px #737373
+    border-style: solid;    
+    border-width: 0 1px 1px 1px;    
+    border-color: #737373;
+    font-size: 12px;
+    padding-top: 10px;
+    @media screen and (max-width:1200px) {
+        font-size: 10px;
+    }
+    @media screen and (max-width:800px) {
+         font-size: 8px;
+    }
+`;
+
+const LogoContainer = styled.div`
+    display: inline-block;
+    position: relative;
+    width: 5em;
+    padding-top: 5em;
+    margin-right: 2%;   
+`;
+
+const Logo = styled.img`
+    position: absolute;
+    left: 50%;
+    top: 50%;    
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+`;
+const TextContainer = styled.div`
+    flex-direction: column;
+    justify-content: space-between;    
+    width: 80%;
+    & *{
+        margin: auto 0;
+        height: 1.5em;
+        line-height: 1.5em;
+        font-size: 1em;        
+        overflow: hidden;
     }
 `;
 
 const TitleText = styled.div`
-    display: block;
     font-weight: bold;
-    overflow: hidden;
-    height: 1.3em;    
     color: white;
+    
+    
 `;
-const InformationDiv = styled.div`
-    display: flux;
-    width: 100%;
-    flex-direction: row;
-`;
-const TextContainer = styled.div`
+const ProfileText = styled.div`
     color: white;
-    display: block;
-`;
-const LogoContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 1em;
-`;
-const Logo = styled.img`
-    width: 3em;
 `;
 class Live extends React.Component {
     render() {
@@ -53,17 +87,18 @@ class Live extends React.Component {
         console.log(watchChannel);
         const channelURL = `https://player.twitch.tv/?channel=${watchChannel.name}&muted=true&controls=true`;
         return (
-            <LiveDiv>
+            <TargetDiv onClick={this.clickHandler}>
                 <LiveContainer>
                     <iframe
                         title={'liveVideo'}
                         style={{
+                            position: 'absolute',
                             width: '100%',
                             height: '100%',
                             border: 'none',
                         }}
-                        src={channelURL} allowFullScreen
-                        //src = {url}
+                        src={channelURL}
+                        allowFullScreen
                     />
                 </LiveContainer>
                 <InformationDiv>
@@ -72,11 +107,11 @@ class Live extends React.Component {
                     </LogoContainer>
                     <TextContainer>
                         <TitleText>{watchChannel.title}</TitleText>
-                        <div>{watchChannel.name}</div>
-                        <div>{watchChannel.viewers} 位觀眾</div>
+                        <ProfileText>{watchChannel.name}</ProfileText>
+                        <ProfileText>{watchChannel.viewers} 位觀眾</ProfileText>
                     </TextContainer>
                 </InformationDiv>
-            </LiveDiv>
+            </TargetDiv>
 
         );
     }
