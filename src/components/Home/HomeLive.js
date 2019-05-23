@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const ControlDiv = styled.div`
     &{
         display: block;
         position: absolute;
         cursor: pointer;
-        width: ${props => props.order === 0 ? "50em" : 50 * (0.8 ** Math.abs(props.order)) + "em"};
-        height: ${props => props.order === 0 ? "28.125em" : 28.125 * (0.8 ** Math.abs(props.order)) + "em"};
+        width: ${props => 55 * (0.8 ** Math.abs(props.order)) + "%"};
+        padding-bottom: ${props => 30 * (0.8 ** Math.abs(props.order)) + "%"};
+        @media screen and (max-width:800px) {
+            width: 100%;
+            padding-bottom: 56.25%;
+        }  
         top:50%;
         left:50%;
         transform: translate(-50%,-50%);
@@ -15,7 +20,10 @@ const ControlDiv = styled.div`
     
     ${props => (
     (props.order !== 0) ?
-        `   & {                
+        `   & {    
+                @media screen and (max-width:800px) {
+                    display: none;
+                }            
                 filter: brightness(50%);
                 z-index: ${10 - Math.abs(props.order)};
                 transform: translate(${-50 + props.order * 30}%,-50%);
@@ -33,8 +41,7 @@ const ControlDiv = styled.div`
 `;
 
 const LiveContainer = styled.div`
-    display: inline-block;
-    box-sizing: border-box;
+    position: absolute;
     width: 100%;
     height: 100%;
     //min-width:90vw     
@@ -46,7 +53,7 @@ class HomeLive extends React.Component {
 
     renderLoaded() {
         const {order, channel} = this.props;
-        return (order ===0 ?
+        return (order === 0 ?
                 <iframe
                     title={'liveVideo'}
                     style={{

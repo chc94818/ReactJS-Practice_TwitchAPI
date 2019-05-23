@@ -6,7 +6,7 @@ const ChannelGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1vw 1vw;
-    @media screen and (max-width:1600px) {
+    @media screen and (max-width:1200px) {
          grid-template-columns: repeat(2, 1fr);
     }
     @media screen and (max-width:800px) {

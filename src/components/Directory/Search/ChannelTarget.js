@@ -30,36 +30,40 @@ const InformationDiv = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-size: 12px;
+    @media screen and (max-width:1200px) {
+        font-size: 10px;
+    }
+    @media screen and (max-width:800px) {
+         font-size: 8px;
+    }
 `;
 
 const LogoContainer = styled.div`
     display: inline-block;
     position: relative;
-    width: 15%;
-    padding-top: 15%;
+    width: 5em;
+    padding-top: 5em;
     margin-right: 2%;   
 `;
 
 const Logo = styled.img`
-    position: absolute; /* Take your picture out of the flow */
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0; /* Make the picture taking the size of it's parent */
-    width: 100%; /* This if for the object-fit */
-    height: 100%; /* This if for the object-fit */
-    object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
-    object-position: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;    
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
 `;
 const TextContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;    
     width: 80%;
-    
     & *{
         margin: auto 0;
-        height: 1.5vw;
-        font-size: 1vw;
+        height: 1.5em;
+        line-height: 1.5em;
+        font-size: 1em;        
         overflow: hidden;
     }
 `;
