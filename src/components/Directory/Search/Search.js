@@ -5,7 +5,7 @@ import ChannelTarget from "./ChannelTarget";
 const ChannelGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1vw 1vw;
+    grid-gap: 1vmax 1vmax;
     @media screen and (max-width:1200px) {
          grid-template-columns: repeat(2, 1fr);
     }

@@ -15,7 +15,7 @@ import GameTarget from "./GameTarget";
 const GameGrid = styled.div`
     display: grid;   
     grid-template-columns: repeat(6, 1fr);
-    grid-gap: 1vw 1vw;
+    grid-gap: 1vmax 1vmax;
     @media screen and (max-width:1200px) {
          grid-template-columns: repeat(3, 1fr);
     }
