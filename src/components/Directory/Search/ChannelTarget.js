@@ -21,10 +21,10 @@ const LiveText = styled.div`
     position: absolute;    
     background: red;
     color: white;
-    padding: 0.1vw 0.4vw;
-    font-size: 12px;
-    top: 0.5vw;
-    left: 0.5vw;
+    padding: 5px 5px;
+    font-size: 1vw;
+    top: 5px;
+    left: 5px;
     height: 1.2vw;
     line-height: 1.2vw;
     vertical-align: middle;
