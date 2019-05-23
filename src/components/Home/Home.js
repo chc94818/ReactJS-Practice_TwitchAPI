@@ -3,34 +3,31 @@ import styled from 'styled-components';
 import SearchContainer from '../Directory/Search/SearchContainer'
 import DirectoryContainer from '../Directory/DirectoryContainer';
 import MultiLivesContainer from './MultiLivesContainer'
-import Search from "../Directory/Search/Search";
-import MultiLives from "./MultiLives";
+
 const HomeDiv = styled.div`
     display: flex;
     width: 100vw;
     flex-direction: column;
-    //background: red;
     align-items: center;
+    justify-content: center;
 `;
 
 const RecommendLiveDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 45vmax;
-    @media screen and (max-width:1000px) {
-        height: 50vmax;
+    height: 35vw;
+    @media screen and (max-width:800px) {
+         height: 56.25vw;
     }
-    margin: 1vmin 0;
-    //border: solid 1em blue;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2vmax;
 `;
 const RecommendDiv = styled.div`
     display: flex;
     width: 100%;
     flex-direction: column;
-    //border: solid 1em green;
     justify-content: center;
     align-items: center;
 `;
@@ -69,7 +66,7 @@ class Home extends React.Component {
         return (
             <HomeDiv>
                 <RecommendLiveDiv>
-                    <MultiLivesContainer liveNum={5}/>
+                    <MultiLivesContainer liveNum={liveNum}/>
                 </RecommendLiveDiv>
                 <RecommendDiv>
                     <GameDiv>

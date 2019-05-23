@@ -7,16 +7,17 @@ const helix = axios.create({
     baseURL: 'https://api.twitch.tv/helix/',
     headers: {'Client-ID': client_id}
 });
-const channelDefault = {
-    id: 34216081824,
-    title: 'Loading',
-    name: 'TSM_Hamlinz',
-    viewers: 'Loading',
-    logoURL: 'https://static-cdn.jtvnw.net/jtv_user_pictures/60416fbc-0497-4292-896e-3b3087010fac-profile_image-300x300.png',
-};
+// const channelDefault = {
+//     id: 34216081824,
+//     title: 'Loading',
+//     name: 'TSM_Hamlinz',
+//     viewers: 'Loading',
+//     logoURL: 'https://static-cdn.jtvnw.net/jtv_user_pictures/60416fbc-0497-4292-896e-3b3087010fac-profile_image-300x300.png',
+// };
+
+// axios request
 const axiosRequestTopGames = (limit) => {
     return helix.get(
-        //`https://api.twitch.tv/kraken/games/top?&limit=${20}&offset=${5}`,
         `games/top?&first=${limit}`,
         {
             headers: {
@@ -27,12 +28,11 @@ const axiosRequestTopGames = (limit) => {
         console.log(error);
     });
 };
-const requestTopGames = (limit = 50, dispatch) => {
 
+// request for top games' information
+const requestTopGames = (limit = 50, dispatch) => {
     axiosRequestTopGames(limit).then(response => {
-        //console.log(response);
         return response.data.data.map((gameObj) => {
-            console.log(gameObj.box_art_url);
             return {
                 id: gameObj.id,
                 name: gameObj.name,
@@ -48,6 +48,7 @@ const requestTopGames = (limit = 50, dispatch) => {
         });
 };
 let GameActions = {
+    // Load top {limit} games
     loadTopGames(limit) {
         return requestTopGames.bind(null, limit);
     },

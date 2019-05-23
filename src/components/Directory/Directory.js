@@ -16,12 +16,13 @@ const GameGrid = styled.div`
     display: grid;   
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 1vw 1vw;
-    @media screen and (max-width:1400px) {
+    @media screen and (max-width:1200px) {
          grid-template-columns: repeat(3, 1fr);
     }
     @media screen and (max-width:800px) {
          grid-template-columns: repeat(2, 1fr);
     }
+    padding: 0 5vmax;
     margin: 2vmax auto;
 `;
 

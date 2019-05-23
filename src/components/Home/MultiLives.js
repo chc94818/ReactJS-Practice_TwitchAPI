@@ -6,7 +6,6 @@ const LiveDiv = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
-    font-size: 1vw;
 `;
 
 class MultiLives extends React.Component {

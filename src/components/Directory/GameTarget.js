@@ -19,7 +19,7 @@ const Img = styled.img`
 `;
 
 const GameTitle= styled.div`
-    word-break: break-all;
+    white-space: wrap;
 `;
 class GameTarget extends React.Component {
     // linkHandler() {
