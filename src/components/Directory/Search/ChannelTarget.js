@@ -37,22 +37,23 @@ const InformationDiv = styled.div`
     border-style: solid;    
     border-width: 0 1px 1px 1px;    
     border-color: #737373;
-    font-size: 12px;
+    font-size: 16px;
     padding-top: 2px;
     @media screen and (max-width:1200px) {
-        font-size: 10px;
+        font-size: 12px;
     }
     @media screen and (max-width:800px) {
          font-size: 8px;
     }
+    white-space: normal;    
 `;
 
 const LogoContainer = styled.div`
     display: inline-block;
     position: relative;
-    width: 5em;
-    padding-top: 5em;
-    margin-right: 2%;   
+    width: 4.5em;
+    padding-top: 4.5em;
+    margin-right: 0.5em;   
 `;
 
 const Logo = styled.img`
@@ -71,7 +72,7 @@ const TextContainer = styled.div`
         margin: auto 0;
         height: 1.5em;
         line-height: 1.5em;
-        font-size: 1em;        
+        font-size: 1em;
         overflow: hidden;
     }
 `;
