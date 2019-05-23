@@ -1,73 +1,76 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const TargetDiv = styled.div`
-    display: flex;
     flex-direction: column;
-    box-sizing : border-box;
-    font-size : 1vw;
-    width: 20vw;
-    margin: 1em;
-    min-width: 15em;    
-    @media screen and (max-width:1200px) {
-        width: 40vw;        
-        font-size : 1.4vw;
-    }
+    font-weight: bold;
     color: white;
     cursor : pointer;
 `;
 
 const ImgContainer = styled.div`
     position: relative;
-    width: 100%;
+    margin-bottom: 2px;
 `;
-
 const Img = styled.img`
-    width: 100%;
-    
+    width: 100%;    
 `;
 const LiveText = styled.div`
     position: absolute;    
-    display: inline-block;
+    background: red;
     color: white;
-    height: 1.2vw;
     padding: 0.1vw 0.4vw;
     top: 0.5vw;
     left: 0.5vw;
-    background: red;
+    height: 1.2vw;
     line-height: 1.2vw;
     vertical-align: middle;
 `;
 const InformationDiv = styled.div`
     display: flex;
     flex-direction: row;
-    overflow: hidden;
+    align-items: center;
 `;
 
 const LogoContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 0.5em;
+    display: inline-block;
+    position: relative;
+    width: 15%;
+    padding-top: 15%;
+    margin-right: 2%;   
 `;
 
 const Logo = styled.img`
-    width: 3em;
+    position: absolute; /* Take your picture out of the flow */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; /* Make the picture taking the size of it's parent */
+    width: 100%; /* This if for the object-fit */
+    height: 100%; /* This if for the object-fit */
+    object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
+    object-position: center;
 `;
 const TextContainer = styled.div`
-    display: block;
+    flex-direction: column;
+    justify-content: space-between;    
+    width: 80%;
+    
+    & *{
+        margin: auto 0;
+        height: 1.5vw;
+        font-size: 1vw;
+        overflow: hidden;
+    }
 `;
 
 const TitleText = styled.div`
-    display: block;
     font-weight: bold;
-    overflow: hidden;
-    height: 1.4em;    
     color: white;
+    
+    
 `;
 const ProfileText = styled.div`
-    display: block;
-    overflow: hidden;
-    height: 1.4em;    
     color: white;
 `;
 

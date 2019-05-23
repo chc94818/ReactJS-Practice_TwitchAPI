@@ -32,11 +32,11 @@ const requestTopGames = (limit = 50, dispatch) => {
     axiosRequestTopGames(limit).then(response => {
         //console.log(response);
         return response.data.data.map((gameObj) => {
-            //console.log(gameObj);
+            console.log(gameObj.box_art_url);
             return {
                 id: gameObj.id,
                 name: gameObj.name,
-                imgURL: gameObj.box_art_url.replace('-{width}x{height}.jpg', '.jpg'),
+                imgURL: gameObj.box_art_url.replace('-{width}x{height}.jpg', '-285x390.jpg'),
             }
         })
     }).then((topGames) => dispatch({

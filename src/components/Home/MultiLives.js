@@ -17,7 +17,7 @@ class MultiLives extends React.Component {
             onClickLive,
         } = this.props;
         const lives = orders.map((order, index)=>{
-                return <HomeLive channel={channels? channels[index]: undefined} order={order} onClickLive={onClickLive}/>
+                return <HomeLive key={index} channel={channels? channels[index]: undefined} order={order} onClickLive={onClickLive}/>
             }
         );
         return (
