@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Button = styled.li`
     display: inline-block;
-    ${props => props.selected ? 'border-bottom : solid white 0.3vmin;' : ''};
+    ${props => props.selected ? 'border-bottom : solid white 6px;' : ''};
     box-sizing : border-box;
     font-size : 1.5vw;
     padding: 1vw 1vw;
