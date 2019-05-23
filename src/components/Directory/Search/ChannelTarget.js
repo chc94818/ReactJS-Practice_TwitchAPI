@@ -12,8 +12,7 @@ const TargetDiv = styled.div`
 `;
 
 const ImgContainer = styled.div`
-    position: relative;
-    font-size: 12px;
+    position: relative;    
 `;
 const Img = styled.img`
     width: 100%;
@@ -23,6 +22,7 @@ const LiveText = styled.div`
     background: red;
     color: white;
     padding: 0.1vw 0.4vw;
+    font-size: 12px;
     top: 0.5vw;
     left: 0.5vw;
     height: 1.2vw;
