@@ -9,8 +9,7 @@ import SearchContainer from "../Directory/Search/SearchContainer";
 
 const BodyDiv = styled.div`
     display: flex;
-    background: #3B3B3B;
-    
+    background: #3B3B3B;    
     flex-direction: column;
     min-width : 100vw;
     min-height : 100vh;
@@ -18,7 +17,6 @@ const BodyDiv = styled.div`
 const MainDiv = styled.div`
     display: flex;
     background: #3B3B3B;
-    margin-top: 130px;
     width: 100vw;
     justify-content: center;
     align-items: center;
@@ -29,13 +27,13 @@ class Main extends React.Component {
         return (
             <BrowserRouter>
                 <BodyDiv>
+                    <NavigatorContainer/>
                     <MainDiv>
                         <Route exact path="/" component={HomeContainer}/>
                         <Route exact path="/live" component={LiveContainer}/>
                         <Route exact path="/directory/search" component={SearchContainer}/>
                         <Route exact path="/directory" component={DirectoryContainer}/>
                     </MainDiv>
-                    <NavigatorContainer/>
                 </BodyDiv>
             </BrowserRouter>
         )
