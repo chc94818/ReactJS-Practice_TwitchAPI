@@ -5,7 +5,7 @@ import LinkButton from './LinkButton';
 const NavigatorDiv = styled.div`    
     display: flex;
     flex-wrap: nowrap;
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     z-index: 11;
