@@ -12,7 +12,8 @@ const GameDiv = styled.div`
     flex-direction: row;
     position: relative;
     width: 100%;
-    padding: 0 5vmax;
+    padding: 0 5vmax;    
+    margin-top: 2vmax;
 `;
 const ImgContainer = styled.div`
     display: inline-block;
