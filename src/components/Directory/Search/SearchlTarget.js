@@ -9,6 +9,10 @@ const TargetDiv = styled.div`
     color: white;
     cursor : pointer;
     font-size: 0;
+    background: #5E5E5E;
+    &:hover {
+      background: #6E6E6E;
+    }
 `;
 
 const ImgContainer = styled.div`
@@ -32,8 +36,7 @@ const LiveText = styled.div`
 const InformationDiv = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: center;
-    background: #5E5E5E;
+    align-items: center;    
     border: solid 2px #737373
     border-style: solid;    
     border-width: 0 1px 1px 1px;    
@@ -101,16 +104,13 @@ class GameTarget extends React.Component {
 
     clickHandler() {
         const {
-            channel,
             updateWatching,
             history,
             onSelect
         } = this.props;
         // link to /live
         history.push({pathname: `/live`});
-        //console.log('click');
-        //console.log(channel.name);
-        updateWatching(channel);
+        updateWatching();
         onSelect(-1);
     }
 
@@ -128,7 +128,7 @@ class GameTarget extends React.Component {
                 </ImgContainer>
                 <InformationDiv>
                     <LogoContainer>
-                        <Logo alt={'logo'} src={channel.imgURL}/>
+                        <Logo alt={'logo'} src={channel.profile_image_url}/>
                     </LogoContainer>
                     <TextContainer>
                         <TitleText>{channel.title}</TitleText>

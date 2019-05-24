@@ -7,18 +7,14 @@ const helix = axios.create({
     baseURL: 'https://api.twitch.tv/helix/',
     headers: {'Client-ID': client_id}
 });
-// const channelDefault = {
-//     id: 34216081824,
-//     title: 'Loading',
-//     name: 'TSM_Hamlinz',
-//     viewers: 'Loading',
-//     logoURL: 'https://static-cdn.jtvnw.net/jtv_user_pictures/60416fbc-0497-4292-896e-3b3087010fac-profile_image-300x300.png',
-// };
+let nextPagination = undefined;
 
 // axios request
-const axiosRequestTopGames = (limit) => {
+const axiosRequestTopGames = (first = 8) => {
     return helix.get(
-        `games/top?&first=${limit}`,
+        nextPagination ?
+            `games/top?after=${nextPagination}&first=${first}`
+            :`games/top?&first=${first}`,
         {
             headers: {
                 'Client-ID': client_id,
@@ -29,9 +25,11 @@ const axiosRequestTopGames = (limit) => {
     });
 };
 
+
 // request for top games' information
-const requestTopGames = (limit = 50, dispatch) => {
-    axiosRequestTopGames(limit).then(response => {
+const requestGames = (first = 8, dispatch) => {
+    axiosRequestTopGames(first).then(response => {
+        nextPagination = response.data.pagination.cursor;
         return response.data.data.map((gameObj) => {
             return {
                 id: gameObj.id,
@@ -40,17 +38,16 @@ const requestTopGames = (limit = 50, dispatch) => {
             }
         })
     }).then((topGames) => dispatch({
-        type: GameActionTypes.LOAD_TOP_GAMES,
+        type: GameActionTypes.UPDATE_GAMES,
         topGames,
     }))
         .catch(error => {
             console.log(error);
         });
 };
-let GameActions = {
-    // Load top {limit} games
-    loadTopGames(limit) {
-        return requestTopGames.bind(null, limit);
+const GameActions = {
+    updateGames(first = 8) {
+        return requestGames.bind(null, first);
     },
 };
 export default GameActions;

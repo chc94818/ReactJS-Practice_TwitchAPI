@@ -9,13 +9,13 @@ class MainContainer extends React.Component {
     componentDidMount() {
         const {
             loadTopKChannels,
-            loadTopGames,
+            updateGames,
             createWatching,
             //loadChannels,
         } = this.props;
         //loadChannels();
         loadTopKChannels(8);
-        loadTopGames();
+        updateGames(36);
         createWatching();
     }
 
@@ -33,7 +33,7 @@ export default MainContainer = connect(
         //loadChannels: ChannelActions.loadChannels,
         loadTopKChannels: ChannelActions.loadTopKChannels,
         //searchChannel: ChannelActions.searchChannel,
-        loadTopGames: GameActions.loadTopGames,
+        updateGames: GameActions.updateGames,
         createWatching: WatchingActions.createWatching,
     }
 )(MainContainer);

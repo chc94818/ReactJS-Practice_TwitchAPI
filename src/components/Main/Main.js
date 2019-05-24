@@ -18,8 +18,8 @@ const BodyDiv = styled.div`
 const MainDiv = styled.div`
     display: flex;
     background: #3B3B3B;
-    
-    width : 100vw;
+    margin-top: 130px;
+    width: 100vw;
     justify-content: center;
     align-items: center;
 `;
@@ -29,13 +29,13 @@ class Main extends React.Component {
         return (
             <BrowserRouter>
                 <BodyDiv>
-                    <NavigatorContainer/>
                     <MainDiv>
                         <Route exact path="/" component={HomeContainer}/>
                         <Route exact path="/live" component={LiveContainer}/>
                         <Route exact path="/directory/search" component={SearchContainer}/>
                         <Route exact path="/directory" component={DirectoryContainer}/>
                     </MainDiv>
+                    <NavigatorContainer/>
                 </BodyDiv>
             </BrowserRouter>
         )

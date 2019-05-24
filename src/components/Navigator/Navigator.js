@@ -4,14 +4,14 @@ import LinkButton from './LinkButton';
 
 const NavigatorDiv = styled.div`    
     display: flex;
+    flex-wrap: nowrap;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 11;
     background: #4F4FFF;
     flex-direction: row;
     justify-content: flex-start;
-`;
-const UL = styled.ul`
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
 `;
 
 class Navigator extends React.Component {
@@ -24,14 +24,12 @@ class Navigator extends React.Component {
                 path={linkButton.path
                 } title={linkButton.title}
                 selected={index === selectedId}
-                onSelect={index < 1 ? onSelect.bind(null, 1) : onSelect.bind(null, index)}
+                onSelect={index < 1 ? onSelect.bind(this, 1) : onSelect.bind(this, index)}
             />
         ));
         return (
             <NavigatorDiv>
-                <UL>
-                    {NavigatorButton}
-                </UL>
+                {NavigatorButton}
             </NavigatorDiv>
 
         );

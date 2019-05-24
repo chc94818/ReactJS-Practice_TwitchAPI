@@ -4,36 +4,48 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import NavigatorActions from "../../actions/NavigatorActions";
 import ChannelActions from "../../actions/ChannelActions";
+import GameActions from "../../actions/GameActions";
 
-class SearchContainer extends React.Component {
+class DirectoryContainer extends React.Component {
 
     render() {
         const {
             topGames,
-            loadChannels,
+            createChannels,
+            updateGames,
             onSelect,
             range,
             history,
+            buttonSet,
         } = this.props;
 
         const sliceGames = range ? topGames.slice(0, range) : topGames;
-        //console.log(sliceGames);
         return (
             <Directory
                 games={sliceGames}
-                onSelect={onSelect}
-                loadChannels={loadChannels}
+                onSelect={(linkTo) => onSelect(linkTo)}
+                createChannels={(gameId) => createChannels(gameId, 48)}
+                updateGames={() => updateGames(24)}
                 history={history}
+                buttonSet={buttonSet}
             />
 
         );
     }
 }
 
-export default withRouter(SearchContainer = connect(
+DirectoryContainer.propTypes = {
+    //placeholder: PropTypes.string.isRequired,
+};
+DirectoryContainer.defaultProps = {
+    buttonSet: true,
+};
+
+export default withRouter(DirectoryContainer = connect(
     (state) => ({topGames: state.GameReducer}),
     {
         onSelect: NavigatorActions.onSelect,
-        loadChannels: ChannelActions.loadChannels,
+        createChannels: ChannelActions.createChannels,
+        updateGames: GameActions.updateGames,
     }
-)(SearchContainer));
+)(DirectoryContainer));

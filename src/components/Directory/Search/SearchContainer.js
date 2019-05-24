@@ -13,28 +13,40 @@ class SearchContainer extends React.Component {
         const {
             channels,
             onSelect,
+            updateChannels,
             updateWatching,
             range,
             history,
+            buttonSet,
+            location,
         } = this.props;
-        //console.log('channels');
-        //console.log(channels);
         const sliceChannels = range ? channels.slice(0, range) : channels;
         return (
             <Search
                 channels={sliceChannels}
-                onSelect={onSelect}
-                updateWatching={updateWatching}
+                onSelect={() => onSelect(-1)}
+                updateChannels={() => updateChannels(location.state.gameId, 24)}
+                updateWatching={(channel) => updateWatching(channel)}
                 history={history}
+                buttonSet={buttonSet}
+                gameName={location.state? location.state.gameName:""}
+                gameImgURL={location.state? location.state.gameImgURL:""}
             />
         );
     }
 }
+
+SearchContainer.propTypes = {
+};
+SearchContainer.defaultProps = {
+    buttonSet: true,
+};
+
 export default withRouter(SearchContainer = connect(
     (state) => ({channels: state.ChannelReducer}),
     {
         onSelect: NavigatorActions.onSelect,
-        loadChannels: ChannelActions.loadChannels,
+        updateChannels: ChannelActions.updateChannels,
         updateWatching: WatchingActions.updateWatching,
     }
 )(SearchContainer));
