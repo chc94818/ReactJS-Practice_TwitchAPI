@@ -10,6 +10,10 @@ const TargetDiv = styled.div`
     min-width: 100px;
     color: white;
     cursor : pointer;
+    background: #5E5E5E;
+    &:hover {
+      background: #6E6E6E;
+    }
 `;
 
 const ImgContainer = styled.div`
@@ -18,8 +22,7 @@ const Img = styled.img`
     width: 100%;    
 `;
 
-const GameTitle = styled.div`
-    background: #5E5E5E;
+const GameTitle = styled.div`    
     border-style: solid;
     border-width: 0 1px 1px 1px;    
     border-color: #737373;
@@ -41,7 +44,7 @@ const GameTitle = styled.div`
     white-space: normal;
 `;
 
-class GameTarget extends React.Component {
+class DirectoryTarget extends React.Component {
     // linkHandler() {
     //     const{path, onSelect} = this.props;
     //     this.props.history.push(path);
@@ -55,13 +58,19 @@ class GameTarget extends React.Component {
     clickHandler() {
         const {
             history,
-            game_id,
-            loadChannels,
+            gameId,
+            createChannels,
             onSelect,
+            name,
+            imageSrc,
         } = this.props;
-        loadChannels(game_id, 24);
+        createChannels();
         onSelect(2);
-        history.push('/directory/search');
+        history.push('/directory/search', {
+            gameId: gameId,
+            gameName: name,
+            gameImgURL: imageSrc,
+        });
     }
 
     render() {
@@ -80,4 +89,4 @@ class GameTarget extends React.Component {
     }
 }
 
-export default GameTarget;
+export default DirectoryTarget;

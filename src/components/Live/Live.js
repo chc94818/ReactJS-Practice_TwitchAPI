@@ -102,7 +102,7 @@ class Live extends React.Component {
                 </LiveContainer>
                 <InformationDiv>
                     <LogoContainer>
-                        <Logo alt={'logo'} src={watchChannel.imgURL}/>
+                        <Logo alt={'logo'} src={watchChannel.profile_image_url}/>
                     </LogoContainer>
                     <TextContainer>
                         <TitleText>{watchChannel.title}</TitleText>

@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from "styled-components";
-import GameTarget from "./GameTarget";
-
+import styled from 'styled-components';
+import DirectoryTarget from './DirectoryTarget';
+import LoadButton from './LoadButton';
 // const UL = styled.ul`
 //     display: block;
 //     flex-direction: row;
@@ -11,6 +11,10 @@ import GameTarget from "./GameTarget";
 //     list-style-type: none;
 //     padding: 0;
 // `;
+const DirectoryDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
 const GameGrid = styled.div`
     display: grid;   
@@ -33,28 +37,35 @@ class Directory extends React.Component {
         const {
             games,
             onSelect,
-            loadChannels,
+            createChannels,
+            updateGames,
             history,
+            buttonSet,
         } = this.props;
+
+        //console.log([...games][0]);
         const gamelist = games.map((game) => {
-            //console.log(game);
             return (
-                <GameTarget
+                <DirectoryTarget
                     key={game.id}
-                    game_id={game.id}
+                    gameId={game.id}
                     name={game.name}
                     imageSrc={game.imgURL}
                     onSelect={onSelect}
-                    loadChannels={loadChannels}
+                    createChannels={()=>createChannels(game.id)}
                     history={history}
                 />
             );
         });
 
         return (
-            <GameGrid>
-                {gamelist}
-            </GameGrid>
+            <DirectoryDiv>
+                <GameGrid>
+                    {gamelist}
+                </GameGrid>
+                {buttonSet ? <LoadButton handler={updateGames}/>: ""}
+            </DirectoryDiv>
+
 
         );
     }

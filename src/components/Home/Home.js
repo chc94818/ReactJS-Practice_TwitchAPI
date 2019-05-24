@@ -71,11 +71,11 @@ class Home extends React.Component {
                 <RecommendDiv>
                     <GameDiv>
                         <TitleDiv>推薦的分類</TitleDiv>
-                        <DirectoryContainer range={recommendClassNum}/>
+                        <DirectoryContainer buttonSet={false} range={recommendClassNum}/>
                     </GameDiv>
                     <ChannelDiv>
                         <TitleDiv>推薦的頻道</TitleDiv>
-                        <SearchContainer range={recommendTopNum}/>
+                        <SearchContainer buttonSet={false} range={recommendTopNum}/>
                     </ChannelDiv>
                 </RecommendDiv>
             </HomeDiv>
