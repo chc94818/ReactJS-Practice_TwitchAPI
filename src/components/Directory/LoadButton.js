@@ -6,14 +6,18 @@ const ButtonContainer = styled.div`
     position: fixed;
     width: 100%;
     bottom: 0;
+    left: 0;
     background: #4E4E4E;
     text-align: center;
     padding: 5px 0px 10px 0px;
     color: #C9C9C9;
-    &:hover {
-      background: #6E6E6E;
-      color : white;
+    @media (hover:hover) {
+        :hover {
+        background: #6E6E6E;
+        color : white;
+        }
     }
+    
     cursor : pointer;
 `;
 
@@ -33,7 +37,10 @@ class LoadButton extends React.Component {
             handler
         } = this.props;
         return (
-            <ButtonContainer onClick={handler}>
+            <ButtonContainer
+                onClick={handler}
+                onTouchEnd={handler}
+            >
                 <LoadArrow/>
             </ButtonContainer>
         );

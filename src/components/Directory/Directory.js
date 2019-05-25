@@ -14,6 +14,7 @@ import LoadButton from './LoadButton';
 const DirectoryDiv = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
 `;
 
 const GameGrid = styled.div`

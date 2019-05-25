@@ -37,7 +37,7 @@ class LinkButton extends React.Component {
         const {title, selected} = this.props;
         //console.log(`${title} ${selected}`);
         return (
-            <Button selected={selected} onClick={this.linkHandler}>{title}</Button>
+            <Button selected={selected} onClick={this.linkHandler} onTouchEnd={this.linkHandler}>{title}</Button>
         );
     }
 }

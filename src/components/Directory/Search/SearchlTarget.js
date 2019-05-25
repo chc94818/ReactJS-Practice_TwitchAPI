@@ -121,7 +121,7 @@ class GameTarget extends React.Component {
 
         //console.log(channel);
         return (
-            <TargetDiv onClick={this.clickHandler}>
+            <TargetDiv onClick={this.clickHandler} onTouchEnd={this.clickHandler}>
                 <ImgContainer>
                     <LiveText>LIVE</LiveText>
                     <Img alt={'game'} src={channel.imgURL}/>

@@ -6,6 +6,7 @@ import LoadButton from "../LoadButton";
 const SearchDiv = styled.div`
     display: flex;    
     flex-direction: column;
+    justify-content: center;
 `;
 const GameDiv = styled.div`
     display: flex;    
