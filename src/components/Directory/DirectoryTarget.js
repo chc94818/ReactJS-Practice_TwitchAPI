@@ -79,7 +79,7 @@ class DirectoryTarget extends React.Component {
             imageSrc,
         } = this.props;
         return (
-            <TargetDiv onClick={this.clickHandler} onTouchEnd={this.clickHandler}>
+            <TargetDiv onClick={this.clickHandler}>
                 <ImgContainer>
                     <Img alt={'game'} src={imageSrc}/>
                 </ImgContainer>

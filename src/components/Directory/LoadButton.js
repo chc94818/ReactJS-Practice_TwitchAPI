@@ -39,7 +39,6 @@ class LoadButton extends React.Component {
         return (
             <ButtonContainer
                 onClick={handler}
-                onTouchEnd={handler}
             >
                 <LoadArrow/>
             </ButtonContainer>
