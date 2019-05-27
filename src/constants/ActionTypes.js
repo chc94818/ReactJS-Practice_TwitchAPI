@@ -9,7 +9,7 @@ export const ChannelActionTypes = {
     //SEARCH_CHANNEL: 'SEARCH_CHANNEL',
 };
 export const GameActionTypes = {
-    LOAD_TOP_GAMES: 'LOAD_TOP_GAMES',
+    CREATE_GAMES: 'CREATE_GAMES',
     UPDATE_GAMES: 'UPDATE_GAMES',
 };
 export const NavigatorActionTypes = {

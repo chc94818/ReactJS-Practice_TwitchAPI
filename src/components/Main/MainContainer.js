@@ -9,31 +9,28 @@ class MainContainer extends React.Component {
     componentDidMount() {
         const {
             loadTopKChannels,
-            updateGames,
+            createGames,
             createWatching,
-            //loadChannels,
         } = this.props;
-        //loadChannels();
         loadTopKChannels(8);
-        updateGames(36);
+        createGames(36);
         createWatching();
     }
 
     render() {
         return (
-            <Main />
+            <Main/>
         )
     }
 }
 
 export default MainContainer = connect(
-
-    (state) => ({channels: state.ChannelReducer }),
+    (state) => ({channels: state.ChannelReducer}),
     {
         //loadChannels: ChannelActions.loadChannels,
         loadTopKChannels: ChannelActions.loadTopKChannels,
         //searchChannel: ChannelActions.searchChannel,
-        updateGames: GameActions.updateGames,
+        createGames: GameActions.createGames,
         createWatching: WatchingActions.createWatching,
     }
 )(MainContainer);

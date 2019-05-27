@@ -24,8 +24,8 @@ class DirectoryContainer extends React.Component {
             <Directory
                 games={sliceGames}
                 onSelect={(linkTo) => onSelect(linkTo)}
-                createChannels={(gameId) => createChannels(gameId, 48)}
-                updateGames={() => updateGames(24)}
+                createChannels={(gameId) => createChannels(gameId, 12)}
+                updateGames={() => updateGames(12)}
                 history={history}
                 buttonSet={buttonSet}
             />
