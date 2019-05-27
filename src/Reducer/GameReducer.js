@@ -9,8 +9,8 @@ const GameRecord = Record({
 });
 
 const _update = (gameList, newGames) => {
-    const updateGames = newGames.filter((game)=>{
-        const find = gameList.find((entry)=> entry.id === game.id);
+    const updateGames = newGames.filter((game) => {
+        const find = gameList.find((entry) => entry.id === game.id);
         return !find;
     });
     return gameList.push(...updateGames.map((game) =>
@@ -24,8 +24,10 @@ const _update = (gameList, newGames) => {
 };
 const GameReducer = (state = new List(), action) => {
     switch (action.type) {
+        case GameActionTypes.CREATE_GAMES:
+            return new List(action.games);
         case GameActionTypes.UPDATE_GAMES:
-            return _update(state, action.topGames);
+            return _update(state, action.games);
         default:
             return state;
     }

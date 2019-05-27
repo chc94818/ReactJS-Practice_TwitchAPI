@@ -1,4 +1,4 @@
-import {GameActionTypes} from '../constants/ActionTypes';
+import {ChannelActionTypes, GameActionTypes} from '../constants/ActionTypes';
 import axios from "axios";
 
 
@@ -27,7 +27,8 @@ const axiosRequestTopGames = (first = 8) => {
 
 
 // request for top games' information
-const requestGames = (first = 8, dispatch) => {
+const requestGames = (first = 8, create = false, dispatch) => {
+    nextPagination = create? undefined:nextPagination;
     axiosRequestTopGames(first).then(response => {
         nextPagination = response.data.pagination.cursor;
         return response.data.data.map((gameObj) => {
@@ -37,9 +38,9 @@ const requestGames = (first = 8, dispatch) => {
                 imgURL: gameObj.box_art_url.replace('-{width}x{height}.jpg', '-285x390.jpg'),
             }
         })
-    }).then((topGames) => dispatch({
-        type: GameActionTypes.UPDATE_GAMES,
-        topGames,
+    }).then((games) => dispatch({
+        type: create ? GameActionTypes.CREATE_GAMES : GameActionTypes.UPDATE_GAMES,
+        games,
     }))
         .catch(error => {
             console.log(error);
@@ -47,7 +48,10 @@ const requestGames = (first = 8, dispatch) => {
 };
 const GameActions = {
     updateGames(first = 8) {
-        return requestGames.bind(null, first);
+        return requestGames.bind(null, first, false);
+    },
+    createGames(first = 8) {
+        return requestGames.bind(null, first, true);
     },
 };
 export default GameActions;
