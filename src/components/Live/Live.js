@@ -83,12 +83,11 @@ const ProfileText = styled.div`
 class Live extends React.Component {
     render() {
         const {watchChannel} = this.props;
-        console.log(watchChannel);
-        const channelURL = `https://player.twitch.tv/?channel=${watchChannel.name}&muted=true&controls=true`;
         return (
             <TargetDiv onClick={this.clickHandler}>
                 <LiveContainer>
                     <iframe
+                        src={`https://player.twitch.tv/?channel=${watchChannel.name}&muted=true&controls=true`}
                         title={'liveVideo'}
                         style={{
                             position: 'absolute',
@@ -96,7 +95,6 @@ class Live extends React.Component {
                             height: '100%',
                             border: 'none',
                         }}
-                        src={channelURL}
                         allowFullScreen
                     />
                 </LiveContainer>

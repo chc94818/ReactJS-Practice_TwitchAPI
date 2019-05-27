@@ -60,9 +60,8 @@ class HomeLive extends React.Component {
                         height: '100%',
                         border: 'none',
                     }}
-                    src={`https://player.twitch.tv/?channel=${channel.name}&muted=true&controls=true&autoplay=true`}
+                    src={`https://player.twitch.tv/?channel=${channel.name}&muted=true&controls=true&autoplay=false`}
                     allowFullScreen
-                    //src = {url}
                 /> :
                 <img
                     style={{width: '100%', height: '100%'}}
@@ -77,7 +76,6 @@ class HomeLive extends React.Component {
             order,
             onClickLive,
         } = this.props;
-        //console.log(channel);
         const loaded = !!channel;
         return (
             <ControlDiv

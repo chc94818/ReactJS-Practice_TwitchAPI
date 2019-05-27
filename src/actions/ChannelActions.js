@@ -9,7 +9,7 @@ const helix = axios.create({
 let nextPagination = undefined;
 
 // axios request to get channel's user information
-const axiosRequestUserInfo = (user_ids = [33214]) => {
+const axiosRequestUserInfo = (user_ids) => {
     let ids = "";
     user_ids.forEach((user_id) => ids += `&id=${user_id}`);
     return helix.get(
@@ -25,7 +25,7 @@ const axiosRequestUserInfo = (user_ids = [33214]) => {
 };
 
 // axios request to get top channels of game
-const axiosRequestGameChannels = (game_id = 33214, limit = 1) => {
+const axiosRequestGameChannels = (game_id, limit = 1) => {
     return helix.get(
         nextPagination ?
             `streams?first=${limit}&game_id=${game_id}&after=${nextPagination}`
@@ -91,7 +91,7 @@ const requestTopChannels = (limit = 4, dispatch) => {
 
 
 // request channels of specific game
-const requestChannels = (game_id = 33214, first = 8, create = false, dispatch) => {
+const requestChannels = (game_id, first = 8, create = false, dispatch) => {
     nextPagination = create? undefined:nextPagination;
     return axiosRequestGameChannels(game_id, first).then(response => {
         nextPagination = response.data.pagination.cursor;
@@ -122,6 +122,7 @@ const requestChannels = (game_id = 33214, first = 8, create = false, dispatch) =
         type: create ? ChannelActionTypes.CREATE_CHANNELS : ChannelActionTypes.UPDATE_CHANNELS,
         channels,
     })).catch(error => {
+        console.log('here');
         console.log(error);
     });
 };

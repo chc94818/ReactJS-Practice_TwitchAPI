@@ -13,7 +13,7 @@ class MainContainer extends React.Component {
             createWatching,
         } = this.props;
         loadTopKChannels(8);
-        createGames(36);
+        createGames(16);
         createWatching();
     }
 
@@ -27,9 +27,7 @@ class MainContainer extends React.Component {
 export default MainContainer = connect(
     (state) => ({channels: state.ChannelReducer}),
     {
-        //loadChannels: ChannelActions.loadChannels,
         loadTopKChannels: ChannelActions.loadTopKChannels,
-        //searchChannel: ChannelActions.searchChannel,
         createGames: GameActions.createGames,
         createWatching: WatchingActions.createWatching,
     }
