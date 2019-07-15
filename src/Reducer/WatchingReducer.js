@@ -34,23 +34,12 @@ const watchingRecord = Record({
     description: undefined,
 });
 
-const recordDefault = new watchingRecord({
-    user_id: 34216081824,
-    id: 34216081824,
-    title: 'Loading',
-    name: 'Loading',
-    viewers: 'Loading',
-    imgURL: 'https://static-cdn.jtvnw.net/jtv_user_pictures/60416fbc-0497-4292-896e-3b3087010fac-profile_image-300x300.png',
-    offline_image_url: "https://static-cdn.jtvnw.net/jtv_user_pictures/e892ef2008e03cce-channel_offline_image-1920x1080.jpeg",
-    profile_image_url: "https://static-cdn.jtvnw.net/jtv_user_pictures/889305aab7642dd1-profile_image-300x300.png",
-    description: 'Loading',
-});
-const WatchingReducer = (state = new Record(), action) => {
+
+const WatchingReducer = (state = new watchingRecord(), action) => {
     switch (action.type) {
         case WatchingActionTypes.CREATE_WATCHING:
-            return recordDefault;
+            return new watchingRecord();
         case WatchingActionTypes.UPDATE_WATCHING:
-            console.log(action.channel);
             return new watchingRecord(action.channel);
         default:
             return state;

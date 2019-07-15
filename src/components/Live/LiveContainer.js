@@ -1,31 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Route, Redirect } from "react-router-dom";
 import Live from './Live';
 import WatchingActions from "../../actions/WatchingActions";
 
 class LiveContainer extends React.Component {
-    static getRandom(min, max, nums) {
-        const list = [...Array((max-min)).keys()].map(e=>e+min);
-
-        const randomList = [];
-        for (let i = 0; i < nums; i++) {
-            let ran = Math.floor(Math.random() * (max-min));
-            randomList.push(list[ran]);
-            list.slice(ran, 1);
-        }
-        return randomList;
-    }
 
     componentDidMount() {
         const {
             watchChannel,
             channels,
-            createWatching,
+            updateWatching,
         } = this.props;
-        if (watchChannel.displayName === 'Loading') {
-            createWatching(channels.get(LiveContainer.getRandom(0, channels.size)));
+        if (watchChannel.name === undefined && channels.size>0) {
+            updateWatching(channels.get[0]);
         }
-
     }
 
     render() {
@@ -33,7 +22,19 @@ class LiveContainer extends React.Component {
             watchChannel,
         } = this.props;
         return (
-            <Live watchChannel={watchChannel}/>
+            <Route
+                render={() =>
+                    watchChannel.name ? (
+                        <Live watchChannel={watchChannel} />
+                    ) : (
+                        <Redirect
+                            to={{
+                                pathname: "/"
+                            }}
+                        />
+                    )
+                }
+            />
         );
     }
 }
@@ -44,7 +45,7 @@ export default LiveContainer = connect(
         watchChannel: state.WatchingReducer,
     }),
     {
-        createWatching: WatchingActions.createWatching,
+        updateWatching: WatchingActions.createWatching,
     }
 )(LiveContainer);
 

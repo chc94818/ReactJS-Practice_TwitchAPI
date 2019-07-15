@@ -8,7 +8,6 @@ import WatchingActions from "../../../actions/WatchingActions";
 
 class SearchContainer extends React.Component {
 
-
     render() {
         const {
             channels,

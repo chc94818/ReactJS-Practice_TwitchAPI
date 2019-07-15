@@ -21,6 +21,7 @@ class DirectoryContainer extends React.Component {
 
         const sliceGames = range ? topGames.slice(0, range) : topGames;
         return (
+
             <Directory
                 games={sliceGames}
                 onSelect={(linkTo) => onSelect(linkTo)}

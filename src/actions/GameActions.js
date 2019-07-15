@@ -1,4 +1,4 @@
-import {ChannelActionTypes, GameActionTypes} from '../constants/ActionTypes';
+import {GameActionTypes} from '../constants/ActionTypes';
 import axios from "axios";
 
 
