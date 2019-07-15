@@ -60,7 +60,7 @@ class HomeLive extends React.Component {
                         height: '100%',
                         border: 'none',
                     }}
-                    src={`https://player.twitch.tv/?channel=${channel.name}&muted=true&controls=true&autoplay=true`}
+                    src={`https://player.twitch.tv/?channel=${channel.name}&muted=true&controls=true&autoplay=false`}
                     allowFullScreen
                 /> :
                 <img
